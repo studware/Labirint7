@@ -1,6 +1,3 @@
-# Labirint7
-Telerik Academy High Quality Code Teamwork - Team "Labirint-7"
-
 High-Quality Programming Code – Team Projects
 Overview
 
@@ -112,4 +109,3 @@ Sample Refactoring Documentation for Project “Game 15”
     Introduced class ScoreBoard and moved all related functionality in it.
     Moved method GenerateRandomNumber(int start, int end) to separate class RandomUtils.
     …
-
