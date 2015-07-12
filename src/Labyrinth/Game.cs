@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Labyrinth
 {
-    class Game
+    public class Game
     {
         public static bool flag;
 
