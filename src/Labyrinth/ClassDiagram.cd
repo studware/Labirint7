@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Labyrinth.Game">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAoIAAAAAAASACEgAQAAAAAAAA=</HashCode>
+      <FileName>Game.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Labyrinth.Labyrinth">
+    <Position X="4.5" Y="2.75" Width="1.5" />
+    <InheritanceLine Type="Labyrinth.Game" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2.5" Y="3.786" />
+        <Point X="2.5" Y="4.161" />
+        <Point X="3.625" Y="4.161" />
+        <Point X="3.625" Y="2.375" />
+        <Point X="5.25" Y="2.375" />
+        <Point X="5.25" Y="2.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAFAgAAQAAAAAAAAAAAAAAADAAAAAA=</HashCode>
+      <FileName>Labyrinth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Labyrinth.Table">
+    <Position X="8.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Table.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

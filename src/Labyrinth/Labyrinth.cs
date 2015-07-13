@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    public class Program : Game
+    public class Labyrinth : Game
     {
         private static void Main(string[] args)
         {
