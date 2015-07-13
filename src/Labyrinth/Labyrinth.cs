@@ -5,15 +5,13 @@
 
     public class Labyrinth : Game
     {
-        private const int GameStartPositionX = 3;
-        private const int GameStartPositionY = 3;
-
         private static void Main(string[] args)
         {
             positionX = GameStartPositionX;
             positionY = GameStartPositionY;
 
             flag2 = flag3 = true;
+
             string[,] labyrinth = new string[7, 7];
 
             while (flag3)

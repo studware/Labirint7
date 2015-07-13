@@ -7,6 +7,10 @@ namespace Labyrinth
 {
     public class Game
     {
+        public const int GameStartPositionX = 3;
+
+        public const int GameStartPositionY = 3;
+
         public static bool flag;
 
         public static bool flag2;
