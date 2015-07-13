@@ -27,7 +27,9 @@
                 }
 
                 DisplayLabyrinth(labyrinth);
+
                 Test(labyrinth, flag2, currentRow, currentColumn);
+
                 while (flag4) // used for adding score only when game is finished naturally and not by the restart command.
                 {
                     Add(scores, currentMoves);
@@ -179,7 +181,7 @@
                 Console.WriteLine("\nInvalid move! \n ");
             }
 
-            if (y == 6)
+            if (y == LabyrinthColumnLength - 1)
             {
                 Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
                 flag_temp = false;
@@ -223,7 +225,7 @@
                 Console.WriteLine("\nInvalid move! \n ");
             }
 
-            if (x == 6)
+            if (x == LabyrinthRowLength - 1)
             {
                 Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
                 flag_temp = false;
