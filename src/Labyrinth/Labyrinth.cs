@@ -12,7 +12,7 @@
 
             flag2 = flag3 = true;
 
-            string[,] labyrinth = new string[7, 7];
+            string[,] labyrinth = new string[LabyrinthRowLength, LabyrinthColumnLength];
 
             while (flag3)
             {

@@ -7,9 +7,17 @@ namespace Labyrinth
 {
     public class Game
     {
-        public const int GameStartPositionX = 3;
+        // For now this should be odd nummbers (original value was odd number)
+        public const int LabyrinthRowLength = 7;
 
-        public const int GameStartPositionY = 3;
+        // For now this should be odd nummbers (original value was odd number)
+        public const int LabyrinthColumnLength = 7;
+
+        //Depends on LabyrinthRowLength
+        public static int GameStartPositionX = LabyrinthRowLength / 2;
+
+        //Depends on LabyrinthColumnLength
+        public static int GameStartPositionY = LabyrinthColumnLength / 2;
 
         public static bool gameInitialized;
 
