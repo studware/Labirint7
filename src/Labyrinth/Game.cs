@@ -14,10 +14,10 @@ namespace Labyrinth
         public const int LabyrinthColumnLength = 7;
 
         //Depends on LabyrinthRowLength
-        public static int GameStartPositionX = LabyrinthRowLength / 2;
+        public static int GameStartRow = LabyrinthRowLength / 2;
 
         //Depends on LabyrinthColumnLength
-        public static int GameStartPositionY = LabyrinthColumnLength / 2;
+        public static int GameStartColumn = LabyrinthColumnLength / 2;
 
         public static bool gameInitialized;
 
@@ -27,9 +27,9 @@ namespace Labyrinth
 
         public static bool flag4;
 
-        public static int positionX;
+        public static int currentRow;
 
-        public static int positionY;
+        public static int currentColumn;
 
         public static int currentMoves;
 
@@ -70,7 +70,7 @@ namespace Labyrinth
                     }
                 }
             }
-            labyrinth[positionX, positionY] = "*";
+            labyrinth[currentRow, currentColumn] = "*";
         }
 
         protected static void SolutionChecker(string[,] labyrinth, int x, int y)

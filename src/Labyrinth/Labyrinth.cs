@@ -7,8 +7,8 @@
     {
         private static void Main(string[] args)
         {
-            positionX = GameStartPositionX;
-            positionY = GameStartPositionY;
+            currentRow = GameStartRow;
+            currentColumn = GameStartColumn;
 
             flag2 = flag3 = true;
 
@@ -22,12 +22,12 @@
 
                 while (!gameInitialized)
                 {
-                    LabyrinthGenerator(labyrinth, positionX, positionY);
-                    SolutionChecker(labyrinth, positionX, positionY);
+                    LabyrinthGenerator(labyrinth, currentRow, currentColumn);
+                    SolutionChecker(labyrinth, currentRow, currentColumn);
                 }
 
                 DisplayLabyrinth(labyrinth);
-                Test(labyrinth, flag2, positionX, positionY);
+                Test(labyrinth, flag2, currentRow, currentColumn);
                 while (flag4) // used for adding score only when game is finished naturally and not by the restart command.
                 {
                     Add(scores, currentMoves);
