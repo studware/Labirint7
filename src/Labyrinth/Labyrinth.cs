@@ -18,9 +18,9 @@
             {
                 Console.WriteLine("Welcome to \"Labyrinth\" game. Please try to escape. Use 'top' to view the top \nscoreboard,'restart' to start a new game and 'exit' to quit the game.\n ");
 
-                flag = flag4 = false;
+                gameInitialized = flag4 = false;
 
-                while (flag == false)
+                while (!gameInitialized)
                 {
                     LabyrinthGenerator(labyrinth, positionX, positionY);
                     SolutionChecker(labyrinth, positionX, positionY);

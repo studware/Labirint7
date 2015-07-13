@@ -11,7 +11,7 @@ namespace Labyrinth
 
         public const int GameStartPositionY = 3;
 
-        public static bool flag;
+        public static bool gameInitialized;
 
         public static bool flag2;
 
@@ -67,14 +67,15 @@ namespace Labyrinth
 
         protected static void SolutionChecker(string[,] labyrinth, int x, int y)
         {
-            bool checking = true;
+            bool labyrinthIsReady = false;
 
+            // if start position is surrounded by "x" (player can't move)
             if (labyrinth[x + 1, y] == "x" && labyrinth[x, y + 1] == "x" && labyrinth[x - 1, y] == "x" && labyrinth[x, y - 1] == "x")
             {
-                checking = false;
+                return; // retrun to re-initiate the labyrinth
             }
 
-            while (checking)
+            while (!labyrinthIsReady)
             {
                 try
                 {
@@ -100,7 +101,7 @@ namespace Labyrinth
                     }
                     else
                     {
-                        checking = false;
+                        labyrinthIsReady = true;
                     }
                 }
                 catch (Exception)
@@ -115,8 +116,8 @@ namespace Labyrinth
                             }
                         }
 
-                        checking = false;
-                        flag = true;
+                        labyrinthIsReady = true;
+                        gameInitialized = true;
                     }
                 }
             }
