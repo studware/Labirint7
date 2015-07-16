@@ -10,7 +10,7 @@
             currentRow = GameStartRow;
             currentColumn = GameStartColumn;
 
-            flag2 = flag3 = true;
+            flag3 = true;
 
             string[,] labyrinth = new string[LabyrinthRowLength, LabyrinthColumnLength];
 
@@ -18,7 +18,8 @@
             {
                 Console.WriteLine("Welcome to \"Labyrinth\" game. Please try to escape. Use 'top' to view the top \nscoreboard,'restart' to start a new game and 'exit' to quit the game.\n ");
 
-                gameInitialized = flag4 = false;
+                gameInitialized = false;
+                flag4 = false;
 
                 while (!gameInitialized)
                 {
@@ -28,7 +29,7 @@
 
                 DisplayLabyrinth(labyrinth);
 
-                Test(labyrinth, flag2, currentRow, currentColumn);
+                Test(labyrinth, currentRow, currentColumn);
 
                 while (flag4) // used for adding score only when game is finished naturally and not by the restart command.
                 {
@@ -89,11 +90,13 @@
             }
         }
 
-        static void Test(string[,] labyrinth, bool flag_temp, int x, int y)
+        static void Test(string[,] labyrinth, int x, int y)
         {
+            // Maybe find better name. This bool swiches to false when the game ends or the user choose restart        
+            bool gameContinues = true;
             currentMoves = 0;
 
-            while (flag_temp)
+            while (gameContinues)
             {
                 Console.Write("\nEnter your move (L=left, R=right, D=down, U=up): ");
                 string userChoice = Console.ReadLine();
@@ -102,25 +105,25 @@
                 {
                     case "d":
                     case "D":
-                        TryMoveDown(labyrinth, ref flag_temp, ref x, y);
+                        TryMoveDown(labyrinth, ref gameContinues, ref x, y);
                         DisplayLabyrinth(labyrinth);
                         break;
 
                     case "u":
                     case "U":
-                        TryMoveUp(labyrinth, ref flag_temp, ref x, y);
+                        TryMoveUp(labyrinth, ref gameContinues, ref x, y);
                         DisplayLabyrinth(labyrinth);
                         break;
 
                     case "r":
                     case "R":
-                        TryMoveRight(labyrinth, ref flag_temp, x, ref y);
+                        TryMoveRight(labyrinth, ref gameContinues, x, ref y);
                         DisplayLabyrinth(labyrinth);
                         break;
 
                     case "l":
                     case "L":
-                        TryMoveLeft(labyrinth, ref flag_temp, x, ref y);
+                        TryMoveLeft(labyrinth, ref gameContinues, x, ref y);
                         DisplayLabyrinth(labyrinth);
                         break;
 
@@ -131,7 +134,7 @@
                         break;
 
                     case "restart":
-                        flag_temp = false;
+                        gameContinues = false;
                         break;
 
                     case "exit":
@@ -145,7 +148,7 @@
             }
         }
 
-        private static void TryMoveLeft(string[,] labyrinth, ref bool flag_temp, int x, ref int y)
+        private static void TryMoveLeft(string[,] labyrinth, ref bool gameContinues, int x, ref int y)
         {
             if (labyrinth[x, y - 1] == "-")
             {
@@ -162,12 +165,12 @@
             if (y == 0)
             {
                 Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
-                flag_temp = false;
+                gameContinues = false;
                 flag4 = true;
             }
         }
 
-        private static void TryMoveRight(string[,] labyrinth, ref bool flag_temp, int x, ref int y)
+        private static void TryMoveRight(string[,] labyrinth, ref bool gameContinues, int x, ref int y)
         {
             if (labyrinth[x, y + 1] == "-")
             {
@@ -184,12 +187,12 @@
             if (y == LabyrinthColumnLength - 1)
             {
                 Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
-                flag_temp = false;
+                gameContinues = false;
                 flag4 = true;
             }
         }
 
-        private static void TryMoveUp(string[,] labyrinth, ref bool flag_temp, ref int x, int y)
+        private static void TryMoveUp(string[,] labyrinth, ref bool gameContinues, ref int x, int y)
         {
             if (labyrinth[x - 1, y] == "-")
             {
@@ -206,12 +209,12 @@
             if (x == 0)
             {
                 Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
-                flag_temp = false;
+                gameContinues = false;
                 flag4 = true;
             }
         }
 
-        private static void TryMoveDown(string[,] labyrinth, ref bool flag_temp, ref int x, int y)
+        private static void TryMoveDown(string[,] labyrinth, ref bool gameContinues, ref int x, int y)
         {
             if (labyrinth[x + 1, y] == "-")
             {
@@ -228,7 +231,7 @@
             if (x == LabyrinthRowLength - 1)
             {
                 Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
-                flag_temp = false;
+                gameContinues = false;
                 flag4 = true;
             }
         }

@@ -21,8 +21,6 @@ namespace Labyrinth
 
         public static bool gameInitialized;
 
-        public static bool flag2;
-
         public static bool flag3;
 
         public static bool flag4;
