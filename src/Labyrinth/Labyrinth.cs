@@ -10,6 +10,7 @@
             currentRow = GameStartRow;
             currentColumn = GameStartColumn;
 
+            // It seems this is alway true (the main while cycle )
             flag3 = true;
 
             string[,] labyrinth = new string[LabyrinthRowLength, LabyrinthColumnLength];
@@ -19,7 +20,7 @@
                 Console.WriteLine("Welcome to \"Labyrinth\" game. Please try to escape. Use 'top' to view the top \nscoreboard,'restart' to start a new game and 'exit' to quit the game.\n ");
 
                 gameInitialized = false;
-                flag4 = false;
+                gameEndedRecordScore = false;
 
                 while (!gameInitialized)
                 {
@@ -31,7 +32,7 @@
 
                 Test(labyrinth, currentRow, currentColumn);
 
-                while (flag4) // used for adding score only when game is finished naturally and not by the restart command.
+                if (gameEndedRecordScore) // used for adding score only when game is finished naturally and not by the restart command.
                 {
                     Add(scores, currentMoves);
                 }
@@ -65,7 +66,7 @@
                 Table_(s);
             }
 
-            flag4 = false;
+            gameEndedRecordScore = false;
         }
 
         static void Table_(List<Table> scores)
@@ -166,7 +167,7 @@
             {
                 Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
                 gameContinues = false;
-                flag4 = true;
+                gameEndedRecordScore = true;
             }
         }
 
@@ -188,7 +189,7 @@
             {
                 Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
                 gameContinues = false;
-                flag4 = true;
+                gameEndedRecordScore = true;
             }
         }
 
@@ -210,7 +211,7 @@
             {
                 Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
                 gameContinues = false;
-                flag4 = true;
+                gameEndedRecordScore = true;
             }
         }
 
@@ -232,7 +233,7 @@
             {
                 Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
                 gameContinues = false;
-                flag4 = true;
+                gameEndedRecordScore = true;
             }
         }
     }

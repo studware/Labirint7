@@ -23,7 +23,7 @@ namespace Labyrinth
 
         public static bool flag3;
 
-        public static bool flag4;
+        public static bool gameEndedRecordScore;
 
         public static int currentRow;
 
