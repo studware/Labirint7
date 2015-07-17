@@ -30,7 +30,7 @@
 
                 DisplayLabyrinth(labyrinth);
 
-                Test(labyrinth, currentRow, currentColumn);
+                PlayGame(labyrinth, currentRow, currentColumn);
 
                 if (gameEndedRecordScore) // used for adding score only when game is finished naturally and not by the restart command.
                 {
@@ -39,37 +39,36 @@
             }
         }
 
-        static void Add(List<Table> s, int m)
+        static void Add(List<Table> scores, int movesCount)
         {
-            if (s.Count != 0)
+            if (scores.Count != 0)
             {
-                s.Sort(delegate(Table s1, Table s2) { return s1.moves.CompareTo(s2.moves); });
+                scores.Sort(delegate(Table s1, Table s2) { return s1.moves.CompareTo(s2.moves); });
             }
 
-            if (s.Count == 5)
-            {
-                if (s[4].moves > m)
-                {
-                    s.Remove(s[4]);
-                    Console.WriteLine("Please enter your nickname");
-                    string name = Console.ReadLine();
-                    s.Add(new Table(m, name));
-                    Table_(s);
-                }
-            }
-
-            if (s.Count < 5)
+            if (scores.Count < 5)
             {
                 Console.WriteLine("Please enter your nickname");
                 string name = Console.ReadLine();
-                s.Add(new Table(m, name));
-                Table_(s);
+                scores.Add(new Table(movesCount, name));
+                PrintTopScores(scores);
+            }
+            else 
+            {
+                if (scores[4].moves > movesCount)
+                {
+                    scores.Remove(scores[4]);
+                    Console.WriteLine("Please enter your nickname");
+                    string name = Console.ReadLine();
+                    scores.Add(new Table(movesCount, name));
+                    PrintTopScores(scores);
+                }
             }
 
             gameEndedRecordScore = false;
         }
 
-        static void Table_(List<Table> scores)
+        static void PrintTopScores(List<Table> scores)
         {
             Console.WriteLine("\n");
             if (scores.Count == 0)
@@ -91,7 +90,7 @@
             }
         }
 
-        static void Test(string[,] labyrinth, int x, int y)
+        static void PlayGame(string[,] labyrinth, int x, int y)
         {
             // Maybe find better name. This bool swiches to false when the game ends or the user choose restart        
             bool gameContinues = true;
@@ -129,7 +128,7 @@
                         break;
 
                     case "top":
-                        Table_(scores);
+                        PrintTopScores(scores);
                         Console.WriteLine("\n");
                         DisplayLabyrinth(labyrinth);
                         break;
