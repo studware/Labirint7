@@ -34,12 +34,12 @@
 
                 if (gameEndedRecordScore) // used for adding score only when game is finished naturally and not by the restart command.
                 {
-                    Add(scores, currentMoves);
+                    AddScore(scores, currentMoves);
                 }
             }
         }
 
-        static void Add(List<Table> scores, int movesCount)
+        static void AddScore(List<Table> scores, int movesCount)
         {
             if (scores.Count != 0)
             {
