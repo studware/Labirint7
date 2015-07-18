@@ -10,7 +10,8 @@
             currentRow = GameStartRow;
             currentColumn = GameStartColumn;
 
-            flag2 = flag3 = true;
+            // It seems this is alway true (the main while cycle )
+            flag3 = true;
 
             string[,] labyrinth = new string[LabyrinthRowLength, LabyrinthColumnLength];
 
@@ -18,7 +19,8 @@
             {
                 Console.WriteLine("Welcome to \"Labyrinth\" game. Please try to escape. Use 'top' to view the top \nscoreboard,'restart' to start a new game and 'exit' to quit the game.\n ");
 
-                gameInitialized = flag4 = false;
+                gameInitialized = false;
+                gameEndedRecordScore = false;
 
                 while (!gameInitialized)
                 {
@@ -28,46 +30,45 @@
 
                 DisplayLabyrinth(labyrinth);
 
-                Test(labyrinth, flag2, currentRow, currentColumn);
+                PlayGame(labyrinth, currentRow, currentColumn);
 
-                while (flag4) // used for adding score only when game is finished naturally and not by the restart command.
+                if (gameEndedRecordScore) // used for adding score only when game is finished naturally and not by the restart command.
                 {
-                    Add(scores, currentMoves);
+                    AddScore(scores, currentMoves);
                 }
             }
         }
 
-        static void Add(List<Table> s, int m)
+        static void AddScore(List<Table> scores, int movesCount)
         {
-            if (s.Count != 0)
+            if (scores.Count != 0)
             {
-                s.Sort(delegate(Table s1, Table s2) { return s1.moves.CompareTo(s2.moves); });
+                scores.Sort(delegate(Table s1, Table s2) { return s1.moves.CompareTo(s2.moves); });
             }
 
-            if (s.Count == 5)
-            {
-                if (s[4].moves > m)
-                {
-                    s.Remove(s[4]);
-                    Console.WriteLine("Please enter your nickname");
-                    string name = Console.ReadLine();
-                    s.Add(new Table(m, name));
-                    Table_(s);
-                }
-            }
-
-            if (s.Count < 5)
+            if (scores.Count < 5)
             {
                 Console.WriteLine("Please enter your nickname");
                 string name = Console.ReadLine();
-                s.Add(new Table(m, name));
-                Table_(s);
+                scores.Add(new Table(movesCount, name));
+                PrintTopScores(scores);
+            }
+            else 
+            {
+                if (scores[4].moves > movesCount)
+                {
+                    scores.Remove(scores[4]);
+                    Console.WriteLine("Please enter your nickname");
+                    string name = Console.ReadLine();
+                    scores.Add(new Table(movesCount, name));
+                    PrintTopScores(scores);
+                }
             }
 
-            flag4 = false;
+            gameEndedRecordScore = false;
         }
 
-        static void Table_(List<Table> scores)
+        static void PrintTopScores(List<Table> scores)
         {
             Console.WriteLine("\n");
             if (scores.Count == 0)
@@ -89,11 +90,13 @@
             }
         }
 
-        static void Test(string[,] labyrinth, bool flag_temp, int x, int y)
+        static void PlayGame(string[,] labyrinth, int x, int y)
         {
+            // Maybe find better name. This bool swiches to false when the game ends or the user choose restart        
+            bool gameContinues = true;
             currentMoves = 0;
 
-            while (flag_temp)
+            while (gameContinues)
             {
                 Console.Write("\nEnter your move (L=left, R=right, D=down, U=up): ");
                 string userChoice = Console.ReadLine();
@@ -102,36 +105,36 @@
                 {
                     case "d":
                     case "D":
-                        TryMoveDown(labyrinth, ref flag_temp, ref x, y);
+                        TryMoveDown(labyrinth, ref gameContinues, ref x, y);
                         DisplayLabyrinth(labyrinth);
                         break;
 
                     case "u":
                     case "U":
-                        TryMoveUp(labyrinth, ref flag_temp, ref x, y);
+                        TryMoveUp(labyrinth, ref gameContinues, ref x, y);
                         DisplayLabyrinth(labyrinth);
                         break;
 
                     case "r":
                     case "R":
-                        TryMoveRight(labyrinth, ref flag_temp, x, ref y);
+                        TryMoveRight(labyrinth, ref gameContinues, x, ref y);
                         DisplayLabyrinth(labyrinth);
                         break;
 
                     case "l":
                     case "L":
-                        TryMoveLeft(labyrinth, ref flag_temp, x, ref y);
+                        TryMoveLeft(labyrinth, ref gameContinues, x, ref y);
                         DisplayLabyrinth(labyrinth);
                         break;
 
                     case "top":
-                        Table_(scores);
+                        PrintTopScores(scores);
                         Console.WriteLine("\n");
                         DisplayLabyrinth(labyrinth);
                         break;
 
                     case "restart":
-                        flag_temp = false;
+                        gameContinues = false;
                         break;
 
                     case "exit":
@@ -145,7 +148,7 @@
             }
         }
 
-        private static void TryMoveLeft(string[,] labyrinth, ref bool flag_temp, int x, ref int y)
+        private static void TryMoveLeft(string[,] labyrinth, ref bool gameContinues, int x, ref int y)
         {
             if (labyrinth[x, y - 1] == "-")
             {
@@ -162,12 +165,12 @@
             if (y == 0)
             {
                 Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
-                flag_temp = false;
-                flag4 = true;
+                gameContinues = false;
+                gameEndedRecordScore = true;
             }
         }
 
-        private static void TryMoveRight(string[,] labyrinth, ref bool flag_temp, int x, ref int y)
+        private static void TryMoveRight(string[,] labyrinth, ref bool gameContinues, int x, ref int y)
         {
             if (labyrinth[x, y + 1] == "-")
             {
@@ -184,12 +187,12 @@
             if (y == LabyrinthColumnLength - 1)
             {
                 Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
-                flag_temp = false;
-                flag4 = true;
+                gameContinues = false;
+                gameEndedRecordScore = true;
             }
         }
 
-        private static void TryMoveUp(string[,] labyrinth, ref bool flag_temp, ref int x, int y)
+        private static void TryMoveUp(string[,] labyrinth, ref bool gameContinues, ref int x, int y)
         {
             if (labyrinth[x - 1, y] == "-")
             {
@@ -206,12 +209,12 @@
             if (x == 0)
             {
                 Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
-                flag_temp = false;
-                flag4 = true;
+                gameContinues = false;
+                gameEndedRecordScore = true;
             }
         }
 
-        private static void TryMoveDown(string[,] labyrinth, ref bool flag_temp, ref int x, int y)
+        private static void TryMoveDown(string[,] labyrinth, ref bool gameContinues, ref int x, int y)
         {
             if (labyrinth[x + 1, y] == "-")
             {
@@ -228,8 +231,8 @@
             if (x == LabyrinthRowLength - 1)
             {
                 Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
-                flag_temp = false;
-                flag4 = true;
+                gameContinues = false;
+                gameEndedRecordScore = true;
             }
         }
     }
