@@ -3,19 +3,37 @@
     using System;
     using System.Collections.Generic;
 
-    public class Labyrinth : Game
+    /// <summary>
+    /// This class controls the game Labyrinth using one instance at a time by the means of Singleton pattern
+    /// </summary>
+    public sealed class LabyrinthEngine : Game
     {
-        private static void Main(string[] args)
+        private static readonly LabyrinthEngine gameInstance = new LabyrinthEngine();
+
+        static LabyrinthEngine()
         {
+        }
+
+        private LabyrinthEngine()
+        {
+        }
+
+        public static LabyrinthEngine GameInstance
+        {
+            get
+            {
+                return gameInstance;
+            }
+        }
+
+        public static void Main()
+        {           
             currentRow = GameStartRow;
             currentColumn = GameStartColumn;
 
-            // It seems this is alway true (the main while cycle )
-            flag3 = true;
-
             string[,] labyrinth = new string[LabyrinthRowLength, LabyrinthColumnLength];
 
-            while (flag3)
+            while (true)
             {
                 Console.WriteLine("Welcome to \"Labyrinth\" game. Please try to escape. Use 'top' to view the top \nscoreboard,'restart' to start a new game and 'exit' to quit the game.\n ");
 
