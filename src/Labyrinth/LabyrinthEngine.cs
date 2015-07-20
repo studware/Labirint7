@@ -4,12 +4,20 @@
     using System.Collections.Generic;
 
     /// <summary>
-    /// This class controls the game Labyrinth using one instance at a time by the means of Singleton pattern
+    /// This class controls the game Labyrinth using one instance at a time
+    /// by the means of Singleton creative design pattern
+    /// combined with the "Lazy Initialization" creative design pattern.
     /// </summary>
     public sealed class LabyrinthEngine : Game
     {
         private static readonly LabyrinthEngine gameInstance = new LabyrinthEngine();
 
+        /// <summary>
+        /// Explicit static constructor to tell C# compiler not to mark type as beforefieldinit;
+        /// this provides for using the "Lazy Initialization" pattern, because
+        /// the laziness of type initializers is only guaranteed by .NET when the type isn't marked
+        /// with a special flag called "beforefieldinit".
+        /// </summary>
         static LabyrinthEngine()
         {
         }
@@ -31,10 +39,11 @@
             currentRow = GameStartRow;
             currentColumn = GameStartColumn;
 
-            string[,] labyrinth = new string[LabyrinthRowLength, LabyrinthColumnLength];
+            char[,] labyrinth = new char[LabyrinthRowLength, LabyrinthColumnLength];
 
             while (true)
             {
+                Console.Clear();
                 Console.WriteLine("Welcome to \"Labyrinth\" game. Please try to escape. Use 'top' to view the top \nscoreboard,'restart' to start a new game and 'exit' to quit the game.\n ");
 
                 gameInitialized = false;
@@ -45,6 +54,9 @@
                     LabyrinthGenerator(labyrinth, currentRow, currentColumn);
                     SolutionChecker(labyrinth, currentRow, currentColumn);
                 }
+
+//              Console.SetWindowSize(40, 50);
+//              Console.BackgroundColor = ConsoleColor.DarkGray;
 
                 DisplayLabyrinth(labyrinth);
 
@@ -108,54 +120,45 @@
             }
         }
 
-        static void PlayGame(string[,] labyrinth, int x, int y)
-        {
-            // Maybe find better name. This bool swiches to false when the game ends or the user choose restart        
-            bool gameContinues = true;
+        static void PlayGame(char[,] labyrinth, int row, int col)
+        {      
+            bool gameInProgress = true;
             currentMoves = 0;
+            Console.Write("\nEnter your move (Left Arrow = left, Right Arrow = right, Down Arrow = down, Up Arrow = up): ");
 
-            while (gameContinues)
+            while (gameInProgress)
             {
-                Console.Write("\nEnter your move (L=left, R=right, D=down, U=up): ");
-                string userChoice = Console.ReadLine();
+                ConsoleKeyInfo userChoice = Console.ReadKey(true);
 
-                switch (userChoice)
+                switch (userChoice.Key)
                 {
-                    case "d":
-                    case "D":
-                        TryMoveDown(labyrinth, ref gameContinues, ref x, y);
-                        DisplayLabyrinth(labyrinth);
+                    case ConsoleKey.DownArrow:
+                        TryMoveDown(labyrinth, ref gameInProgress, ref row, col);
                         break;
 
-                    case "u":
-                    case "U":
-                        TryMoveUp(labyrinth, ref gameContinues, ref x, y);
-                        DisplayLabyrinth(labyrinth);
+                    case ConsoleKey.UpArrow:
+                        TryMoveUp(labyrinth, ref gameInProgress, ref row, col);
                         break;
 
-                    case "r":
-                    case "R":
-                        TryMoveRight(labyrinth, ref gameContinues, x, ref y);
-                        DisplayLabyrinth(labyrinth);
+                    case ConsoleKey.RightArrow:
+                        TryMoveRight(labyrinth, ref gameInProgress, row, ref col);
                         break;
 
-                    case "l":
-                    case "L":
-                        TryMoveLeft(labyrinth, ref gameContinues, x, ref y);
-                        DisplayLabyrinth(labyrinth);
+                    case ConsoleKey.LeftArrow:
+                        TryMoveLeft(labyrinth, ref gameInProgress, row, ref col);
                         break;
 
-                    case "top":
+                    case ConsoleKey.T:
                         PrintTopScores(scores);
                         Console.WriteLine("\n");
                         DisplayLabyrinth(labyrinth);
                         break;
 
-                    case "restart":
-                        gameContinues = false;
+                    case ConsoleKey.R:
+                        gameInProgress = false;
                         break;
 
-                    case "exit":
+                    case ConsoleKey.E:
                         Console.WriteLine("Good bye!");
                         Environment.Exit(0);
                         break;
@@ -166,13 +169,18 @@
             }
         }
 
-        private static void TryMoveLeft(string[,] labyrinth, ref bool gameContinues, int x, ref int y)
+        private static void TryMoveLeft(char[,] labyrinth, ref bool gameInProgress, int row, ref int col)
         {
-            if (labyrinth[x, y - 1] == "-")
+            if (labyrinth[row, col - 1] == '-')
             {
-                labyrinth[x, y] = "-";
-                labyrinth[x, y - 1] = "*";
-                y--;
+                labyrinth[row, col] = '-';
+                Console.SetCursorPosition(2*col, row+3);
+                Console.Write('-');
+                col--;
+                labyrinth[row, col] = '*';
+                Console.SetCursorPosition(2*col, row+3);
+                Console.Write('*');
+
                 currentMoves++;
             }
             else
@@ -180,21 +188,27 @@
                 Console.WriteLine("\nInvalid move! \n ");
             }
 
-            if (y == 0)
+            if (col == 0)
             {
+                Console.SetCursorPosition(2, 15);
                 Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
-                gameContinues = false;
+                gameInProgress = false;
                 gameEndedRecordScore = true;
             }
         }
 
-        private static void TryMoveRight(string[,] labyrinth, ref bool gameContinues, int x, ref int y)
+        private static void TryMoveRight(char[,] labyrinth, ref bool gameInProgress, int row, ref int col)
         {
-            if (labyrinth[x, y + 1] == "-")
+            if (labyrinth[row, col + 1] == '-')
             {
-                labyrinth[x, y] = "-";
-                labyrinth[x, y + 1] = "*";
-                y++;
+                labyrinth[row, col] = '-';
+                Console.SetCursorPosition(2*col, row + 3);
+                Console.Write('-');
+                col++;
+                labyrinth[row, col] = '*';
+                Console.SetCursorPosition(2*col, row + 3);
+                Console.Write('*');
+
                 currentMoves++;
             }
             else
@@ -202,21 +216,27 @@
                 Console.WriteLine("\nInvalid move! \n ");
             }
 
-            if (y == LabyrinthColumnLength - 1)
+            if (col == LabyrinthColumnLength - 1)
             {
+                Console.SetCursorPosition(2, 15);
                 Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
-                gameContinues = false;
+                gameInProgress = false;
                 gameEndedRecordScore = true;
             }
         }
 
-        private static void TryMoveUp(string[,] labyrinth, ref bool gameContinues, ref int x, int y)
+        private static void TryMoveUp(char[,] labyrinth, ref bool gameInProgress, ref int row, int col)
         {
-            if (labyrinth[x - 1, y] == "-")
+            if (labyrinth[row - 1, col] == '-')
             {
-                labyrinth[x, y] = "-";
-                labyrinth[x - 1, y] = "*";
-                x--;
+                labyrinth[row, col] = '-';
+                Console.SetCursorPosition(2*col, row + 3);
+                Console.Write('-');
+                row--;
+                labyrinth[row, col] = '*';
+                Console.SetCursorPosition(2 * col, row + 3);
+                Console.Write('*');
+
                 currentMoves++;
             }
             else
@@ -224,32 +244,40 @@
                 Console.WriteLine("\nInvalid move! \n ");
             }
 
-            if (x == 0)
+            if (row == 0)
             {
+                Console.SetCursorPosition(2, 15);
                 Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
-                gameContinues = false;
+                gameInProgress = false;
                 gameEndedRecordScore = true;
             }
         }
 
-        private static void TryMoveDown(string[,] labyrinth, ref bool gameContinues, ref int x, int y)
+        private static void TryMoveDown(char[,] labyrinth, ref bool gameInProgress, ref int row, int col)
         {
-            if (labyrinth[x + 1, y] == "-")
+            if (labyrinth[row + 1, col] == '-')
             {
-                labyrinth[x, y] = "-";
-                labyrinth[x + 1, y] = "*";
-                x++;
+                labyrinth[row, col] = '-';
+                Console.SetCursorPosition(2 * col, row + 3);
+                Console.Write('-');
+                row++;
+                labyrinth[row, col] = '*';
+                Console.SetCursorPosition(2 * col, row + 3);
+                Console.Write('*');
+
                 currentMoves++;
             }
+
             else
             {
                 Console.WriteLine("\nInvalid move! \n ");
             }
 
-            if (x == LabyrinthRowLength - 1)
+            if (row == LabyrinthRowLength - 1)
             {
+                Console.SetCursorPosition(2, 15);
                 Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
-                gameContinues = false;
+                gameInProgress = false;
                 gameEndedRecordScore = true;
             }
         }

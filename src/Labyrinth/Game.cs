@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Labyrinth
 {
@@ -19,7 +17,9 @@ namespace Labyrinth
         //Depends on LabyrinthColumnLength
         public static int GameStartColumn = LabyrinthColumnLength / 2;
 
-        public static bool gameInitialized;
+        public static bool gameInitialized = false;
+
+        public static bool labyrinthIsReady = false;
 
         public static bool gameEndedRecordScore;
 
@@ -30,24 +30,24 @@ namespace Labyrinth
         public static int currentMoves;
 
         public static List<Table> scores = new List<Table>(4);
-        protected static void DisplayLabyrinth(string[,] labyrinth)
+        protected static void DisplayLabyrinth(char[,] labyrinth)
         {
-            for (int linee = 0; linee < 7; linee++)
+            for (int row = 0; row < 7; row++)
             {
-                string s1 = labyrinth[linee, 0];
-                string s2 = labyrinth[linee, 1];
-                string s3 = labyrinth[linee, 2];
-                string s4 = labyrinth[linee, 3];
-                string s5 = labyrinth[linee, 4];
-                string s6 = labyrinth[linee, 5];
-                string s7 = labyrinth[linee, 6];
+                char tile1 = labyrinth[row, 0];
+                char tile2 = labyrinth[row, 1];
+                char tile3 = labyrinth[row, 2];
+                char tile4 = labyrinth[row, 3];
+                char tile5 = labyrinth[row, 4];
+                char tile6 = labyrinth[row, 5];
+                char tile7 = labyrinth[row, 6];
 
-                Console.WriteLine("{0} {1} {2} {3} {4} {5} {6} ", s1, s2, s3, s4, s5, s6, s7);
+                Console.WriteLine("{0} {1} {2} {3} {4} {5} {6} ", tile1, tile2, tile3, tile4, tile5, tile6, tile7);
             }
             Console.WriteLine();
         }
 
-        protected static void LabyrinthGenerator(string[,] labyrinth, int x, int y)
+        protected static void LabyrinthGenerator(char[,] labyrinth, int row, int col)
         {
             Random randomInt = new Random();
 
@@ -55,76 +55,49 @@ namespace Labyrinth
             {
                 for (int j = 0; j < 7; j++)
                 {
-                    labyrinth[i, j] = Convert.ToString(randomInt.Next(2));
-                    if (labyrinth[i, j] == "0")
+//                  labyrinth[i, j] = Convert.ToChar(randomInt.Next(2));
+//                  if (labyrinth[i, j] == '0')
+//                  {
+//                      labyrinth[i, j] = '-';
+//                  }
+//                  else
+//                  {
+//                      labyrinth[i, j] = 'x';
+//                  }
+
+                    int randomNumber=randomInt.Next(2);
+
+                    if (randomNumber == 0)
                     {
-                        labyrinth[i, j] = "-";
+                        labyrinth[i, j] = '-';
                     }
                     else
                     {
-                        labyrinth[i, j] = "x";
+                        labyrinth[i, j] = 'x';
                     }
                 }
             }
-            labyrinth[currentRow, currentColumn] = "*";
+            labyrinth[currentRow, currentColumn] = '*';
         }
 
-        protected static void SolutionChecker(string[,] labyrinth, int x, int y)
+        /// <summary>
+        /// This method should check if THERE IS ANY PATH OUT of the maze - may be it should be re-written?
+        /// 
+        /// </summary>
+        /// <param name="labyrinth"></param>
+        /// <param name="row"></param>
+        /// <param name="col"></param>
+        protected static void SolutionChecker(char[,] labyrinth, int row, int col)
         {
-            bool labyrinthIsReady = false;
+            // if start position is surrounded by "x" (player can't move) - return to re-initiate the labyrinth
 
-            // if start position is surrounded by "x" (player can't move)
-            if (labyrinth[x + 1, y] == "x" && labyrinth[x, y + 1] == "x" && labyrinth[x - 1, y] == "x" && labyrinth[x, y - 1] == "x")
+            if (labyrinth[col + 1, row] == '-' || labyrinth[col, row + 1] == '-' || labyrinth[col - 1, row] == '-' || labyrinth[col, row - 1] == '-')
             {
-                return; // retrun to re-initiate the labyrinth
+                labyrinthIsReady = true;
+                gameInitialized = true; 
             }
 
-            while (!labyrinthIsReady)
-            {
-                try
-                {
-                    if (labyrinth[x + 1, y] == "-")
-                    {
-                        labyrinth[x + 1, y] = "0";
-                        x++;
-                    }
-                    else if (labyrinth[x, y + 1] == "-")
-                    {
-                        labyrinth[x, y + 1] = "0";
-                        y++;
-                    }
-                    else if (labyrinth[x - 1, y] == "-")
-                    {
-                        labyrinth[x - 1, y] = "0";
-                        x--;
-                    }
-                    else if (labyrinth[x, y - 1] == "-")
-                    {
-                        labyrinth[x, y - 1] = "0";
-                        y--;
-                    }
-                    else
-                    {
-                        labyrinthIsReady = true;
-                    }
-                }
-                catch (Exception)
-                {
-                    for (int i = 0; i < 7; i++)
-                    {
-                        for (int j = 0; j < 7; j++)
-                        {
-                            if (labyrinth[i, j] == "0")
-                            {
-                                labyrinth[i, j] = "-";
-                            }
-                        }
-
-                        labyrinthIsReady = true;
-                        gameInitialized = true;
-                    }
-                }
-            }
+            return;
         }
     }
 }
