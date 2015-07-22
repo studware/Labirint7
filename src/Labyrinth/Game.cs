@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Labyrinth
 {
@@ -32,17 +33,25 @@ namespace Labyrinth
         public static List<Table> scores = new List<Table>(4);
         protected static void DisplayLabyrinth(char[,] labyrinth)
         {
-            for (int row = 0; row < 7; row++)
+            for (int row = 0; row < labyrinth.GetLength(0); row++)
             {
-                char tile1 = labyrinth[row, 0];
-                char tile2 = labyrinth[row, 1];
-                char tile3 = labyrinth[row, 2];
-                char tile4 = labyrinth[row, 3];
-                char tile5 = labyrinth[row, 4];
-                char tile6 = labyrinth[row, 5];
-                char tile7 = labyrinth[row, 6];
+                StringBuilder rowBuilder = new StringBuilder(2 * labyrinth.GetLength(1));
+                for (int column = 0; column < labyrinth.GetLength(1); column++)
+                {
+                    rowBuilder.Append(labyrinth[row,column]);
+                    rowBuilder.Append(" ");
+                }
+                //char tile1 = labyrinth[row, 0];
+                //char tile2 = labyrinth[row, 1];
+                //char tile3 = labyrinth[row, 2];
+                //char tile4 = labyrinth[row, 3];
+                //char tile5 = labyrinth[row, 4];
+                //char tile6 = labyrinth[row, 5];
+                //char tile7 = labyrinth[row, 6];
 
-                Console.WriteLine("{0} {1} {2} {3} {4} {5} {6} ", tile1, tile2, tile3, tile4, tile5, tile6, tile7);
+                //Console.WriteLine("{0} {1} {2} {3} {4} {5} {6} ", tile1, tile2, tile3, tile4, tile5, tile6, tile7);
+
+                Console.WriteLine(rowBuilder.ToString());            
             }
             Console.WriteLine();
         }
