@@ -41,15 +41,6 @@ namespace Labyrinth
                     rowBuilder.Append(labyrinth[row,column]);
                     rowBuilder.Append(" ");
                 }
-                //char tile1 = labyrinth[row, 0];
-                //char tile2 = labyrinth[row, 1];
-                //char tile3 = labyrinth[row, 2];
-                //char tile4 = labyrinth[row, 3];
-                //char tile5 = labyrinth[row, 4];
-                //char tile6 = labyrinth[row, 5];
-                //char tile7 = labyrinth[row, 6];
-
-                //Console.WriteLine("{0} {1} {2} {3} {4} {5} {6} ", tile1, tile2, tile3, tile4, tile5, tile6, tile7);
 
                 Console.WriteLine(rowBuilder.ToString());            
             }
@@ -64,16 +55,6 @@ namespace Labyrinth
             {
                 for (int j = 0; j < 7; j++)
                 {
-//                  labyrinth[i, j] = Convert.ToChar(randomInt.Next(2));
-//                  if (labyrinth[i, j] == '0')
-//                  {
-//                      labyrinth[i, j] = '-';
-//                  }
-//                  else
-//                  {
-//                      labyrinth[i, j] = 'x';
-//                  }
-
                     int randomNumber=randomInt.Next(2);
 
                     if (randomNumber == 0)
