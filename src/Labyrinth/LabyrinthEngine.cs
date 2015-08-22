@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using ConsoleMethods;
 
     /// <summary>
     /// This class controls the game Labyrinth using one instance at a time
@@ -124,11 +125,17 @@
         {      
             bool gameInProgress = true;
             currentMoves = 0;
-            Console.Write("\nEnter your move (Left Arrow = left, Right Arrow = right, Down Arrow = down, Up Arrow = up): ");
+            Console.WriteLine("\nEnter your move (Left Arrow = left, Right Arrow = right, Down Arrow = down, Up Arrow = up)");
+            Console.SetCursorPosition(0, 15);
 
             while (gameInProgress)
             {
                 ConsoleKeyInfo userChoice = Console.ReadKey(true);
+
+                // Set currsor position outside of labyrinth and deletes previous turn message if any
+                // I think this should be edited latter to not use magic numbers 
+                Console.SetCursorPosition(0, 15);
+                ConsoleManipulation.ClearCurrentLine();
 
                 switch (userChoice.Key)
                 {
@@ -162,6 +169,7 @@
                         Console.WriteLine("Good bye!");
                         Environment.Exit(0);
                         break;
+
                     default:
                         Console.WriteLine("Invalid command!");
                         break;
@@ -185,7 +193,7 @@
             }
             else
             {
-                Console.WriteLine("\nInvalid move! \n ");
+                Console.WriteLine("Invalid move!");
             }
 
             if (col == 0)
@@ -210,7 +218,7 @@
             }
             else
             {
-                Console.WriteLine("\nInvalid move! \n ");
+                Console.WriteLine("Invalid move!");
             }
 
             if (col == LabyrinthColumnLength - 1)
@@ -235,7 +243,7 @@
             }
             else
             {
-                Console.WriteLine("\nInvalid move! \n ");
+                Console.WriteLine("Invalid move!");
             }
 
             if (row == 0)
@@ -258,10 +266,9 @@
 
                 currentMoves++;
             }
-
             else
             {
-                Console.WriteLine("\nInvalid move! \n ");
+                Console.WriteLine("Invalid move!");
             }
 
             if (row == LabyrinthRowLength - 1)
@@ -272,7 +279,8 @@
         
         private static void GameEndedCongratAndReset(ref bool gameInProgress)
         {
-            Console.SetCursorPosition(2, 15);
+            Console.SetCursorPosition(0, 15);
+            ConsoleManipulation.ClearCurrentLine();
             Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
             gameInProgress = false;
             gameEndedRecordScore = true;

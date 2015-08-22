@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleMethods\ConsoleManipulation.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="LabyrinthEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
