@@ -190,10 +190,7 @@
 
             if (col == 0)
             {
-                Console.SetCursorPosition(2, 15);
-                Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
-                gameInProgress = false;
-                gameEndedRecordScore = true;
+                GameEndedCongratAndReset(ref gameInProgress);
             }
         }
 
@@ -218,10 +215,7 @@
 
             if (col == LabyrinthColumnLength - 1)
             {
-                Console.SetCursorPosition(2, 15);
-                Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
-                gameInProgress = false;
-                gameEndedRecordScore = true;
+                GameEndedCongratAndReset(ref gameInProgress);
             }
         }
 
@@ -246,10 +240,7 @@
 
             if (row == 0)
             {
-                Console.SetCursorPosition(2, 15);
-                Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
-                gameInProgress = false;
-                gameEndedRecordScore = true;
+                GameEndedCongratAndReset(ref gameInProgress);
             }
         }
 
@@ -275,11 +266,16 @@
 
             if (row == LabyrinthRowLength - 1)
             {
-                Console.SetCursorPosition(2, 15);
-                Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
-                gameInProgress = false;
-                gameEndedRecordScore = true;
+                GameEndedCongratAndReset(ref gameInProgress);
             }
+        }
+        
+        private static void GameEndedCongratAndReset(ref bool gameInProgress)
+        {
+            Console.SetCursorPosition(2, 15);
+            Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
+            gameInProgress = false;
+            gameEndedRecordScore = true;
         }
     }
 }
