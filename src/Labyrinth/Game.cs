@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Labyrinth
 {
-    public class Game
+    public abstract class Game
     {
         // For now this should be odd nummbers (original value was odd number)
         public const int LabyrinthRowLength = 7;
@@ -31,6 +31,7 @@ namespace Labyrinth
         public static int currentMoves;
 
         public static List<Table> scores = new List<Table>(4);
+
         protected static void DisplayLabyrinth(char[,] labyrinth)
         {
             for (int row = 0; row < labyrinth.GetLength(0); row++)
