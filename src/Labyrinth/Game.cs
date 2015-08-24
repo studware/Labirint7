@@ -32,12 +32,12 @@ namespace Labyrinth
 
         public static List<Table> scores = new List<Table>(4);
 
-        protected static void DisplayLabyrinth(char[,] labyrinth)
+        protected static void DisplayLabyrinth(Maze labyrinth)
         {
-            for (int row = 0; row < labyrinth.GetLength(0); row++)
+            for (uint row = 0; row < labyrinth.LengthX; row++)
             {
-                StringBuilder rowBuilder = new StringBuilder(2 * labyrinth.GetLength(1));
-                for (int column = 0; column < labyrinth.GetLength(1); column++)
+                StringBuilder rowBuilder = new StringBuilder(2 * (int)labyrinth.LengthY);
+                for (uint column = 0; column < labyrinth.LengthY; column++)
                 {
                     rowBuilder.Append(labyrinth[row,column]);
                     rowBuilder.Append(" ");
@@ -80,13 +80,13 @@ namespace Labyrinth
         /// <param name="col"></param>
         protected static void SolutionChecker(char[,] labyrinth, int row, int col)
         {
-            // if start position is surrounded by "x" (player can't move) - return to re-initiate the labyrinth
+                // if start position is surrounded by "x" (player can't move) - return to re-initiate the labyrinth
 
-            if (labyrinth[col + 1, row] == '-' || labyrinth[col, row + 1] == '-' || labyrinth[col - 1, row] == '-' || labyrinth[col, row - 1] == '-')
-            {
-                labyrinthIsReady = true;
-                gameInitialized = true; 
-            }
+                if (labyrinth[col + 1, row] == '-' || labyrinth[col, row + 1] == '-' || labyrinth[col - 1, row] == '-' || labyrinth[col, row - 1] == '-')
+                {
+                    labyrinthIsReady = true;
+                    gameInitialized = true; 
+                }
 
             return;
         }

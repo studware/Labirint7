@@ -14,13 +14,17 @@
 
         private char[,] mazeData;
 
+        private Random randomInt = new Random();
+
         public Maze(uint sizeX, uint sizeY)
         {
             this.LengthX = sizeX;
 
             this.LengthY = sizeY;
 
-            this.Initialize(this.LengthX, this.LengthY);
+            this.StartPosition = new Position(LengthX / 2, LengthY / 2);
+
+            this.mazeData = new char[this.LengthX, this.LengthY];
         }
 
         /// <summary>
@@ -41,7 +45,7 @@
 
             set
             {
-                this.lengthY = value;
+                this.lengthX = value;
             }
         }
 
@@ -57,6 +61,8 @@
                 this.lengthY = value;
             }
         }
+
+        public Position StartPosition { get; private set; }
 
         // Added indexers for convinience latter
         public char this[Position position]
@@ -88,12 +94,52 @@
 
         public override string ToString()
         {
-            throw new NotImplementedException("Implement a method to draw the maze content on the console");
+            throw new NotImplementedException("Implement the Game.DisplayLabyrinth to display the maze content on the console");
         }
 
-        private void Initialize(uint lengthX, uint lengthY)
+        public void GenerateObstacles()
         {
-            throw new NotImplementedException("Implement the Game.LabyrinthGenerator and Game.SolutionChecker logic here");
+            // Implement the Game.LabyrinthGenerator and Game.SolutionChecker logic here
+            for (uint i = 0; i < this.LengthX; i++)
+            {
+                for (uint j = 0; j < this.LengthY; j++)
+                {
+                    int randomNumber = this.randomInt.Next(2);
+
+                    if (randomNumber == 0)
+                    {
+                        this[i, j] = '-';
+                    }
+                    else
+                    {
+                        this[i, j] = 'x';
+                    }
+                }
+            }
+
+            this[this.StartPosition] = Player.PlayerCharacter;
+
+            bool thereIsWayOut = this.SolutionChecker(this.StartPosition);
+
+            if (!thereIsWayOut)
+            {
+                this.GenerateObstacles();
+            }
+        }
+
+        private bool SolutionChecker(Position current)
+        {
+            // if start position is surrounded by "x" (player can't move) - return to re-initiate the labyrinth
+
+            if (this[current.Right] == '-' || 
+                this[current.Down] == '-' || 
+                this[current.Left] == '-' || 
+                this[current.Up] == '-')
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

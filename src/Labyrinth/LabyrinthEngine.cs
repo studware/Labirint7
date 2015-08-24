@@ -40,7 +40,9 @@
             currentRow = GameStartRow;
             currentColumn = GameStartColumn;
 
-            char[,] labyrinth = new char[LabyrinthRowLength, LabyrinthColumnLength];
+            // char[,] labyrinth = new char[LabyrinthRowLength, LabyrinthColumnLength];
+
+            var labyrinth = new Maze(LabyrinthRowLength);
 
             while (true)
             {
@@ -50,18 +52,17 @@
                 gameInitialized = false;
                 gameEndedRecordScore = false;
 
-                while (!gameInitialized)
+                if (!gameInitialized)
                 {
-                    LabyrinthGenerator(labyrinth, currentRow, currentColumn);
-                    SolutionChecker(labyrinth, currentRow, currentColumn);
+                    labyrinth.GenerateObstacles();
                 }
 
-//              Console.SetWindowSize(40, 50);
-//              Console.BackgroundColor = ConsoleColor.DarkGray;
+                // Console.SetWindowSize(40, 50);
+                // Console.BackgroundColor = ConsoleColor.DarkGray;
 
                 DisplayLabyrinth(labyrinth);
 
-                PlayGame(labyrinth, currentRow, currentColumn);
+                PlayGame(labyrinth, (uint)currentRow, (uint)currentColumn);
 
                 if (gameEndedRecordScore) // used for adding score only when game is finished naturally and not by the restart command.
                 {
@@ -121,7 +122,7 @@
             }
         }
 
-        static void PlayGame(char[,] labyrinth, int row, int col)
+        static void PlayGame(Maze labyrinth, uint row, uint col)
         {      
             bool gameInProgress = true;
             currentMoves = 0;
@@ -177,16 +178,16 @@
             }
         }
 
-        private static void TryMoveLeft(char[,] labyrinth, ref bool gameInProgress, int row, ref int col)
+        private static void TryMoveLeft(Maze labyrinth, ref bool gameInProgress, uint row, ref uint col)
         {
             if (labyrinth[row, col - 1] == '-')
             {
                 labyrinth[row, col] = '-';
-                Console.SetCursorPosition(2*col, row+3);
+                Console.SetCursorPosition(2* (int)col, (int)row +3);
                 Console.Write('-');
                 col--;
                 labyrinth[row, col] = '*';
-                Console.SetCursorPosition(2*col, row+3);
+                Console.SetCursorPosition(2* (int)col, (int)row +3);
                 Console.Write('*');
 
                 currentMoves++;
@@ -202,16 +203,16 @@
             }
         }
 
-        private static void TryMoveRight(char[,] labyrinth, ref bool gameInProgress, int row, ref int col)
+        private static void TryMoveRight(Maze labyrinth, ref bool gameInProgress, uint row, ref uint col)
         {
             if (labyrinth[row, col + 1] == '-')
             {
                 labyrinth[row, col] = '-';
-                Console.SetCursorPosition(2*col, row + 3);
+                Console.SetCursorPosition(2* (int)col, (int)row + 3);
                 Console.Write('-');
                 col++;
                 labyrinth[row, col] = '*';
-                Console.SetCursorPosition(2*col, row + 3);
+                Console.SetCursorPosition(2* (int)col, (int)row + 3);
                 Console.Write('*');
 
                 currentMoves++;
@@ -227,16 +228,16 @@
             }
         }
 
-        private static void TryMoveUp(char[,] labyrinth, ref bool gameInProgress, ref int row, int col)
+        private static void TryMoveUp(Maze labyrinth, ref bool gameInProgress, ref uint row, uint col)
         {
             if (labyrinth[row - 1, col] == '-')
             {
                 labyrinth[row, col] = '-';
-                Console.SetCursorPosition(2*col, row + 3);
+                Console.SetCursorPosition(2* (int)col, (int)row + 3);
                 Console.Write('-');
                 row--;
                 labyrinth[row, col] = '*';
-                Console.SetCursorPosition(2 * col, row + 3);
+                Console.SetCursorPosition(2 * (int)col, (int)row + 3);
                 Console.Write('*');
 
                 currentMoves++;
@@ -252,16 +253,16 @@
             }
         }
 
-        private static void TryMoveDown(char[,] labyrinth, ref bool gameInProgress, ref int row, int col)
+        private static void TryMoveDown(Maze labyrinth, ref bool gameInProgress, ref uint row, uint col)
         {
             if (labyrinth[row + 1, col] == '-')
             {
                 labyrinth[row, col] = '-';
-                Console.SetCursorPosition(2 * col, row + 3);
+                Console.SetCursorPosition(2 * (int)col, (int)row + 3);
                 Console.Write('-');
                 row++;
                 labyrinth[row, col] = '*';
-                Console.SetCursorPosition(2 * col, row + 3);
+                Console.SetCursorPosition(2 * (int)col, (int)row + 3);
                 Console.Write('*');
 
                 currentMoves++;
