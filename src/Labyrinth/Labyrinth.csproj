@@ -43,8 +43,9 @@
   <ItemGroup>
     <Compile Include="ConsoleMethods\ConsoleManipulation.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="Maze.cs" />
     <Compile Include="LabyrinthEngine.cs" />
-    <Compile Include="LabyrinthNavigation.cs" />
+    <Compile Include="MazeNavigation.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -10,7 +10,7 @@
     /// <summary>
     /// Responsible for the player current position, and player realated action
     /// </summary>
-    internal class Player
+    public class Player
     {
         public const char PlayerCharacter = '*';
 
@@ -21,19 +21,30 @@
             this.GetInitialPosition();
         }
 
-        private void GetInitialPosition()
+        public Position CurrentPosition
         {
-            throw new NotImplementedException("Make a reference to Game initial position properties");
-        }
+            get
+            {
+                return this.currentPosition;
+            }
 
-        /* Maybe movement validation can be implemented through the setter e.g. check the space
-        around and make the turn if clear , else , display invalid turn */
-        public Position CurrentPosition { get; set; }
+            set
+            {
+                /* Maybe movement validation can be implemented through the setter e.g. check the space
+                   around and make the turn if clear , else , display invalid turn */
+                this.currentPosition = value;
+            }
+        }
 
         /* Or the moving logic can be completely implemented here */
         public void MakeTurnTo(Position nextPosition)
         {
             throw new NotImplementedException("To be implemented");
+        }
+
+        private void GetInitialPosition()
+        {
+            throw new NotImplementedException("Make a reference to the initial position properties");
         }
     }
 }

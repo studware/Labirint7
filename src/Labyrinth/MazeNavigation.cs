@@ -9,7 +9,8 @@
     /// <summary>
     /// Resposible for the methods involving moving through the maze
     /// </summary>
-    public class LabyrinthNavigation
+    public class MazeNavigation
     {
+        // Implement the tryMove methods here
     }
 }

@@ -6,12 +6,8 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    internal class Position
+    public class Position : IEquatable<Position>
     {
-        private uint x;
-
-        private uint y;
-
         public Position(uint x, uint y)
         {
             this.X = x;
@@ -21,5 +17,11 @@
         public uint X { get; set; }
 
         public uint Y { get; set; }
+
+        public bool Equals(Position other)
+        {
+            return (this.X == other.X && 
+                    this.Y == other.Y);
+        }
     }
 }
