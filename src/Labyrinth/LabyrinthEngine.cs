@@ -102,6 +102,7 @@
 
         static void PrintTopScores(List<Table> scores)
         {
+            Console.SetCursorPosition(0, 15);
             Console.WriteLine("\n");
             if (scores.Count == 0)
             {
@@ -158,8 +159,6 @@
 
                     case ConsoleKey.T:
                         PrintTopScores(scores);
-                        Console.WriteLine("\n");
-                        DisplayLabyrinth(labyrinth);
                         break;
 
                     case ConsoleKey.R:
