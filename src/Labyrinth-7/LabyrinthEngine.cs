@@ -1,4 +1,4 @@
-﻿namespace Labyrinth
+﻿namespace Labyrinth_7
 {
     using System;
     using System.Collections.Generic;

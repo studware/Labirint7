@@ -7,9 +7,9 @@
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Resposible for the methods involving moving through the maze
+    /// Responsible for the methods involving moving through the labyrinth
     /// </summary>
-    public class MazeNavigation
+    public class LabyrinthNavigation
     {
         // Implement the tryMove methods here
     }

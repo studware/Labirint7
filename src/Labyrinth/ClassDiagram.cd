@@ -1,24 +1,70 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Labyrinth.Game">
-    <Position X="1.75" Y="0.5" Width="1.5" />
+  <Class Name="Labyrinth.ConsoleMethods.ConsoleManipulation">
+    <Position X="7.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQABAAQAAAAAAAAIAEAAAAAgQAiAgAQCAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConsoleMethods\ConsoleManipulation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Labyrinth.Game">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQABAAQAAAAAAAAIAEAAAAAgQAiAgAQCAAAAAAg=</HashCode>
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Labyrinth.LabyrinthEngine">
+    <Position X="3.25" Y="2" Width="1.5" />
+    <InheritanceLine Type="Labyrinth.Game" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.417" Y="4.363" />
+        <Point X="1.417" Y="4.738" />
+        <Point X="2.865" Y="4.738" />
+        <Point X="2.865" Y="1.625" />
+        <Point X="3.938" Y="1.625" />
+        <Point X="3.938" Y="2" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAFAgACEAAAABAIAAABAAAABAAAAAA=</HashCode>
+      <FileName>LabyrinthEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LabyrinthlabyrinthData.Labyrinth">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAEAECAAAAGAAAAAAAACAAAAIAGAAAAI=</HashCode>
+      <FileName>Labyrinth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Labyrinth.LabyrinthNavigation">
+    <Position X="5.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LabyrinthNavigation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Labyrinth.Player">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAIAAAAAAAAACAAAAAgAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Labyrinth.Position" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAgAAAAAAAAAAAAAAACACAAAAAYAI=</HashCode>
+      <FileName>Position.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
   <Class Name="Labyrinth.Table">
-    <Position X="8.5" Y="0.75" Width="1.5" />
+    <Position X="10.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Table.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Labyrinth.LabyrinthEngine">
-    <Position X="4.75" Y="1.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAFAgAAEAAAABAIAAABAAAABAAAAAA=</HashCode>
-      <FileName>LabyrinthEngine.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

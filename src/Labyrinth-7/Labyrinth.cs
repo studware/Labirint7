@@ -1,4 +1,4 @@
-﻿namespace Labyrinth
+﻿namespace Labyrinth_7
 {
     using System;
     using System.Collections.Generic;
@@ -6,17 +6,17 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class Maze
+    public class Labyrinth
     {
         private uint lengthX;
 
         private uint lengthY;
 
-        private char[,] mazeData;
+        private char[,] labyrinthData;
 
         private Random randomInt = new Random();
 
-        public Maze(uint sizeX, uint sizeY)
+        public Labyrinth(uint sizeX, uint sizeY)
         {
             this.LengthX = sizeX;
 
@@ -24,14 +24,14 @@
 
             this.StartPosition = new Position(LengthX / 2, LengthY / 2);
 
-            this.mazeData = new char[this.LengthX, this.LengthY];
+            this.labyrinthData = new char[this.LengthX, this.LengthY];
         }
 
         /// <summary>
         /// Creates a square labyrinth
         /// </summary>
         /// <param name="dimensions">Length for the side of the labyrinth</param>
-        public Maze(uint dimensions)
+        public Labyrinth(uint dimensions)
         : this(dimensions, dimensions)
         {
         }
@@ -69,12 +69,12 @@
         {
             get
             {
-                return this.mazeData[position.X, position.Y];
+                return this.labyrinthData[position.X, position.Y];
             }
 
             set
             {
-                this.mazeData[position.X, position.Y] = value;
+                this.labyrinthData[position.X, position.Y] = value;
             }
         }
 
@@ -83,18 +83,18 @@
         {
             get
             {
-                return this.mazeData[indexX, indexY];
+                return this.labyrinthData[indexX, indexY];
             }
 
             set
             {
-                this.mazeData[indexX, indexY] = value;
+                this.labyrinthData[indexX, indexY] = value;
             }
         }
 
         public override string ToString()
         {
-            throw new NotImplementedException("Implement the Game.DisplayLabyrinth to display the maze content on the console");
+            throw new NotImplementedException("Implement the Game.DisplayLabyrinth to display the labyrinth content on the console");
         }
 
         public void GenerateObstacles()

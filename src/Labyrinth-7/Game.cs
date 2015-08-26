@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Labyrinth
+namespace Labyrinth_7
 {
     public abstract class Game
     {
