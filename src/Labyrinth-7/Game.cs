@@ -34,10 +34,10 @@ namespace Labyrinth_7
 
         protected static void DisplayLabyrinth(Labyrinth labyrinth)
         {
-            for (uint row = 0; row < labyrinth.LengthX; row++)
+            for (int row = 0; row < labyrinth.LengthX; row++)
             {
                 StringBuilder rowBuilder = new StringBuilder(2 * (int)labyrinth.LengthY);
-                for (uint column = 0; column < labyrinth.LengthY; column++)
+                for (int column = 0; column < labyrinth.LengthY; column++)
                 {
                     rowBuilder.Append(labyrinth[row,column]);
                     rowBuilder.Append(" ");

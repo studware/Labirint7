@@ -1,22 +1,30 @@
 ﻿namespace Labyrinth_7
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class Labyrinth
     {
-        private uint lengthX;
+        // For now this should be odd nummbers (original value was odd number)
+        public const int LabyrinthRowLength = 7;
 
-        private uint lengthY;
+        // For now this should be odd nummbers (original value was odd number)
+        public const int LabyrinthColumnLength = 7;
+
+        //Depends on LabyrinthRowLength
+        public int GameStartRow = LabyrinthRowLength / 2;
+
+        //Depends on LabyrinthColumnLength
+        public static int GameStartColumn = LabyrinthColumnLength / 2;
+        
+        private int lengthX;
+
+        private int lengthY;
 
         private char[,] labyrinthData;
 
         private Random randomInt = new Random();
 
-        public Labyrinth(uint sizeX, uint sizeY)
+        public Labyrinth(int sizeX, int sizeY)
         {
             this.LengthX = sizeX;
 
@@ -31,12 +39,12 @@
         /// Creates a square labyrinth
         /// </summary>
         /// <param name="dimensions">Length for the side of the labyrinth</param>
-        public Labyrinth(uint dimensions)
+        public Labyrinth(int dimensions)
         : this(dimensions, dimensions)
         {
         }
 
-        public uint LengthX
+        public int LengthX
         {
             get
             {
@@ -49,7 +57,7 @@
             }
         }
 
-        public uint LengthY
+        public int LengthY
         {
             get
             {
@@ -79,7 +87,7 @@
         }
 
         // Added indexers for convinience latter
-        public char this[uint indexX, uint indexY]
+        public char this[int indexX, int indexY]
         {
             get
             {
@@ -100,9 +108,9 @@
         public void GenerateObstacles()
         {
             // Implement the Game.LabyrinthGenerator and Game.SolutionChecker logic here
-            for (uint i = 0; i < this.LengthX; i++)
+            for (int i = 0; i < this.LengthX; i++)
             {
-                for (uint j = 0; j < this.LengthY; j++)
+                for (int j = 0; j < this.LengthY; j++)
                 {
                     int randomNumber = this.randomInt.Next(2);
 

@@ -1,8 +1,8 @@
 ﻿namespace Labyrinth_7
 {
+    using ConsoleMethods;
     using System;
     using System.Collections.Generic;
-    using ConsoleMethods;
 
     /// <summary>
     /// This class controls the game Labyrinth using one instance at a time
@@ -47,7 +47,7 @@
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Welcome to \"Labyrinth\" game. Please try to escape. Use 'T' to view the top \nscoreboard,'R' to start a new game and 'E' to quit the game.\n ");
+                Console.WriteLine("Welcome to \"Labyrinth\" game. Your goal is to escape. Use 'T' to view the top \nscoreboard,'R' to start a new game and 'E' to quit the game.\n ");
 
                 gameInitialized = false;
                 gameEndedRecordScore = false;
@@ -57,12 +57,9 @@
                     labyrinth.GenerateObstacles();
                 }
 
-                // Console.SetWindowSize(40, 50);
-                // Console.BackgroundColor = ConsoleColor.DarkGray;
-
                 DisplayLabyrinth(labyrinth);
 
-                PlayGame(labyrinth, (uint)currentRow, (uint)currentColumn);
+                PlayGame(labyrinth, currentRow, currentColumn);
 
                 if (gameEndedRecordScore) // used for adding score only when game is finished naturally and not by the restart command.
                 {
@@ -123,12 +120,14 @@
             }
         }
 
-        static void PlayGame(Labyrinth labyrinth, uint row, uint col)
+        public static void PlayGame(Labyrinth labyrinth, int row, int col)
         {      
             bool gameInProgress = true;
             currentMoves = 0;
             Console.WriteLine("\nEnter your move (Left Arrow = left, Right Arrow = right, Down Arrow = down, Up Arrow = up)");
             Console.SetCursorPosition(0, 15);
+
+            LabyrinthNavigation navigation = new LabyrinthNavigation();
 
             while (gameInProgress)
             {
@@ -141,20 +140,20 @@
 
                 switch (userChoice.Key)
                 {
-                    case ConsoleKey.DownArrow:
-                        TryMoveDown(labyrinth, ref gameInProgress, ref row, col);
-                        break;
-
-                    case ConsoleKey.UpArrow:
-                        TryMoveUp(labyrinth, ref gameInProgress, ref row, col);
+                    case ConsoleKey.LeftArrow:
+                        navigation.TryMoveLeft(labyrinth, ref gameInProgress, ref row, ref col);
                         break;
 
                     case ConsoleKey.RightArrow:
-                        TryMoveRight(labyrinth, ref gameInProgress, row, ref col);
+                        navigation.TryMoveRight(labyrinth, ref gameInProgress, ref row, ref col);
                         break;
 
-                    case ConsoleKey.LeftArrow:
-                        TryMoveLeft(labyrinth, ref gameInProgress, row, ref col);
+                    case ConsoleKey.DownArrow:
+                        navigation.TryMoveDown(labyrinth, ref gameInProgress, ref row, ref col);
+                        break;
+
+                    case ConsoleKey.UpArrow:
+                        navigation.TryMoveUp(labyrinth, ref gameInProgress, ref row, ref col);
                         break;
 
                     case ConsoleKey.T:
@@ -176,114 +175,19 @@
                 }
             }
         }
-
-        private static void TryMoveLeft(Labyrinth labyrinth, ref bool gameInProgress, uint row, ref uint col)
-        {
-            if (labyrinth[row, col - 1] == '-')
-            {
-                labyrinth[row, col] = '-';
-                Console.SetCursorPosition(2* (int)col, (int)row +3);
-                Console.Write('-');
-                col--;
-                labyrinth[row, col] = '*';
-                Console.SetCursorPosition(2* (int)col, (int)row +3);
-                Console.Write('*');
-
-                currentMoves++;
-            }
-            else
-            {
-                Console.WriteLine("Invalid move!");
-            }
-
-            if (col == 0)
-            {
-                GameEndedCongratAndReset(ref gameInProgress);
-            }
-        }
-
-        private static void TryMoveRight(Labyrinth labyrinth, ref bool gameInProgress, uint row, ref uint col)
-        {
-            if (labyrinth[row, col + 1] == '-')
-            {
-                labyrinth[row, col] = '-';
-                Console.SetCursorPosition(2* (int)col, (int)row + 3);
-                Console.Write('-');
-                col++;
-                labyrinth[row, col] = '*';
-                Console.SetCursorPosition(2* (int)col, (int)row + 3);
-                Console.Write('*');
-
-                currentMoves++;
-            }
-            else
-            {
-                Console.WriteLine("Invalid move!");
-            }
-
-            if (col == LabyrinthColumnLength - 1)
-            {
-                GameEndedCongratAndReset(ref gameInProgress);
-            }
-        }
-
-        private static void TryMoveUp(Labyrinth labyrinth, ref bool gameInProgress, ref uint row, uint col)
-        {
-            if (labyrinth[row - 1, col] == '-')
-            {
-                labyrinth[row, col] = '-';
-                Console.SetCursorPosition(2* (int)col, (int)row + 3);
-                Console.Write('-');
-                row--;
-                labyrinth[row, col] = '*';
-                Console.SetCursorPosition(2 * (int)col, (int)row + 3);
-                Console.Write('*');
-
-                currentMoves++;
-            }
-            else
-            {
-                Console.WriteLine("Invalid move!");
-            }
-
-            if (row == 0)
-            {
-                GameEndedCongratAndReset(ref gameInProgress);
-            }
-        }
-
-        private static void TryMoveDown(Labyrinth labyrinth, ref bool gameInProgress, ref uint row, uint col)
-        {
-            if (labyrinth[row + 1, col] == '-')
-            {
-                labyrinth[row, col] = '-';
-                Console.SetCursorPosition(2 * (int)col, (int)row + 3);
-                Console.Write('-');
-                row++;
-                labyrinth[row, col] = '*';
-                Console.SetCursorPosition(2 * (int)col, (int)row + 3);
-                Console.Write('*');
-
-                currentMoves++;
-            }
-            else
-            {
-                Console.WriteLine("Invalid move!");
-            }
-
-            if (row == LabyrinthRowLength - 1)
-            {
-                GameEndedCongratAndReset(ref gameInProgress);
-            }
-        }
-        
-        private static void GameEndedCongratAndReset(ref bool gameInProgress)
+      
+        public static void GameEndedCongratAndReset(ref bool gameInProgress)
         {
             Console.SetCursorPosition(0, 15);
             ConsoleManipulation.ClearCurrentLine();
             Console.WriteLine("\nCongratulations you escaped with {0} moves.\n", currentMoves);
             gameInProgress = false;
             gameEndedRecordScore = true;
+        }
+
+        public void TryMoveLeft(Labyrinth labyrinth, ref bool gameInProgress, ref int row, ref int col)
+        {
+            throw new NotImplementedException();
         }
     }
 }
