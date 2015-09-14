@@ -43,12 +43,16 @@
   <ItemGroup>
     <Compile Include="ConsoleMethods\ConsoleManipulation.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GameObjects\FreeSpace.cs" />
+    <Compile Include="GameObjects\Obstacle.cs" />
+    <Compile Include="GameObjects\Player.cs" />
     <Compile Include="Labyrinth.cs" />
     <Compile Include="LabyrinthEngine.cs" />
     <Compile Include="LabyrinthNavigation.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GameObjects\BaseObject.cs" />
     <Compile Include="Table.cs" />
   </ItemGroup>
   <ItemGroup>
