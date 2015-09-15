@@ -30,7 +30,7 @@
 
             this.LengthY = sizeY;
 
-            this.StartPosition = new Position(LengthX / 2, LengthY / 2);
+            this.StartPosition = new LabyrinthPosition(LengthX / 2, LengthY / 2);
 
             this.labyrinthData = new char[this.LengthX, this.LengthY];
         }
@@ -70,10 +70,10 @@
             }
         }
 
-        public Position StartPosition { get; private set; }
+        public LabyrinthPosition StartPosition { get; private set; }
 
         // Added indexers for convinience latter
-        public char this[Position position]
+        public char this[LabyrinthPosition position]
         {
             get
             {
@@ -135,7 +135,7 @@
             }
         }
 
-        private bool SolutionChecker(Position current)
+        private bool SolutionChecker(LabyrinthPosition current)
         {
             // if start position is surrounded by "x" (player can't move) - return to re-initiate the labyrinth
 

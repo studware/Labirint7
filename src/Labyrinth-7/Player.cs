@@ -13,14 +13,14 @@
     {
         public const char PlayerCharacter = '*';
 
-        private Position currentPosition;
+        private LabyrinthPosition currentPosition;
 
         public Player()
         {
             this.GetInitialPosition();
         }
 
-        public Position CurrentPosition
+        public LabyrinthPosition CurrentPosition
         {
             get
             {
@@ -36,7 +36,7 @@
         }
 
         /* Or the moving logic can be completely implemented here */
-        public void MakeTurnTo(Position nextPosition)
+        public void MakeTurnTo(LabyrinthPosition nextPosition)
         {
             throw new NotImplementedException("To be implemented");
         }
