@@ -44,19 +44,35 @@
     <Compile Include="ConsoleMethods\ConsoleManipulation.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameObjects\FreeSpace.cs" />
+    <Compile Include="GameObjects\IGameObject.cs" />
     <Compile Include="GameObjects\Obstacle.cs" />
     <Compile Include="GameObjects\Player.cs" />
+    <Compile Include="LabyrinthGrid\ILabyrinthNav.cs" />
+    <Compile Include="LabyrinthGrid\LabyrinthGeneration\Config.cs" />
+    <Compile Include="LabyrinthGrid\LabyrinthGeneration\GameObjectsGenerator.cs" />
+    <Compile Include="LabyrinthGrid\LabyrinthGeneration\IGameObjectsGenerator.cs" />
+    <Compile Include="LabyrinthGrid\LabyrinthGeneration\LabyrinthBuilder.cs" />
+    <Compile Include="LabyrinthGrid\LabyrinthGeneration\LabyrinthDirector.cs" />
+    <Compile Include="LabyrinthGrid\LabyrinthGeneration\SmallLabyrinthBuilder.cs" />
+    <Compile Include="LabyrinthGrid\LabyrinthNavigation.cs" />
+    <Compile Include="LabyrinthGrid\Position.cs" />
     <Compile Include="Labyrinth.cs" />
     <Compile Include="LabyrinthEngine.cs" />
+    <Compile Include="LabyrinthGrid\Labyrinth.cs" />
     <Compile Include="LabyrinthNavigation.cs" />
     <Compile Include="Player.cs" />
-    <Compile Include="Position.cs" />
+    <Compile Include="LabyrinthPosition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GameObjects\BaseObject.cs" />
     <Compile Include="Table.cs" />
+    <Compile Include="Visualization\Visualization.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="GameInterface\" />
+    <Folder Include="Scores\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
