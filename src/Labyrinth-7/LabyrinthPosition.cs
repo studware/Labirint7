@@ -6,9 +6,9 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class Position : IEquatable<Position>
+    public class LabyrinthPosition : IEquatable<LabyrinthPosition>
     {
-        public Position(int x, int y)
+        public LabyrinthPosition(int x, int y)
         {
             this.X = x;
             this.Y = y;
@@ -21,48 +21,48 @@
         /// <summary>
         /// returns the position to the right of the current position
         /// </summary>
-        public Position Right
+        public LabyrinthPosition Right
         {
             get
             {
-                return new Position(this.X + 1, this.Y);
+                return new LabyrinthPosition(this.X + 1, this.Y);
             }
         }
 
         /// <summary>
         /// returns the position bellow the current position
         /// </summary>
-        public Position Down
+        public LabyrinthPosition Down
         {
             get
             {
-                return new Position(this.X, this.Y + 1);
+                return new LabyrinthPosition(this.X, this.Y + 1);
             }
         }
 
         /// <summary>
         /// returns the position to the left of the current position
         /// </summary>
-        public Position Left
+        public LabyrinthPosition Left
         {
             get
             {
-                return new Position(this.X - 1, this.Y);
+                return new LabyrinthPosition(this.X - 1, this.Y);
             }
         }
 
         /// <summary>
         /// returns the position above the current position
         /// </summary>
-        public Position Up
+        public LabyrinthPosition Up
         {
             get
             {
-                return new Position(this.X, this.Y - 1);
+                return new LabyrinthPosition(this.X, this.Y - 1);
             }
         }
 
-        public bool Equals(Position other)
+        public bool Equals(LabyrinthPosition other)
         {
             return (this.X == other.X && 
                     this.Y == other.Y);
