@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Labyrinth_7.GameObjects
+﻿namespace Labyrinth_7.GameObjects
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     /// <summary>
     /// Base object type to be used across the labyrinth grid in desired forms
     /// Using ConsoleColor couples this class to the Console but since this is a Console Application this should be somewhat OK
     /// </summary>
-    public abstract class BaseObject
+    public abstract class BaseObject : IGameObject
     {
         /// <summary>
         /// Default Constructor that sets the background and foreground colors of the object to black and white
