@@ -42,7 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsoleMethods\ConsoleManipulation.cs" />
-    <Compile Include="Game.cs" />
+    <Compile Include="EntryPoint.cs" />
+    <Compile Include="GameMechanics\GameSetup.cs" />
+    <Compile Include="GameMechanics\GameState.cs" />
+    <Compile Include="OldCode\Game.cs" />
     <Compile Include="GameObjects\FreeSpace.cs" />
     <Compile Include="GameObjects\IGameObject.cs" />
     <Compile Include="GameObjects\Obstacle.cs" />
@@ -56,15 +59,15 @@
     <Compile Include="LabyrinthGrid\LabyrinthGeneration\SmallLabyrinthBuilder.cs" />
     <Compile Include="LabyrinthGrid\LabyrinthNavigation.cs" />
     <Compile Include="LabyrinthGrid\Position.cs" />
-    <Compile Include="Labyrinth.cs" />
-    <Compile Include="LabyrinthEngine.cs" />
+    <Compile Include="OldCode\Labyrinth.cs" />
+    <Compile Include="OldCode\LabyrinthEngine.cs" />
     <Compile Include="LabyrinthGrid\Labyrinth.cs" />
-    <Compile Include="LabyrinthNavigation.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="LabyrinthPosition.cs" />
+    <Compile Include="OldCode\LabyrinthNavigation.cs" />
+    <Compile Include="OldCode\Player.cs" />
+    <Compile Include="OldCode\LabyrinthPosition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GameObjects\BaseObject.cs" />
-    <Compile Include="Table.cs" />
+    <Compile Include="OldCode\Table.cs" />
     <Compile Include="Visualization\Visualization.cs" />
   </ItemGroup>
   <ItemGroup>
