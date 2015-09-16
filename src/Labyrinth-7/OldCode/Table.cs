@@ -1,4 +1,4 @@
-﻿namespace Labyrinth_7
+﻿namespace Labyrinth_7.OldCode
 {
     public class Table
     {

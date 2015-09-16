@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Labyrinth_7
+namespace Labyrinth_7.OldCode
 {
     public abstract class Game
     {
