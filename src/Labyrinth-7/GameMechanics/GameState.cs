@@ -12,6 +12,7 @@ namespace Labyrinth_7.GameMechanics
 
         private GameState()
         {
+            this.Reset();
         }
 
         public static GameState Instance
@@ -27,6 +28,14 @@ namespace Labyrinth_7.GameMechanics
             }
         }
 
-        public bool IsInitialized { get; private set; }
+        public bool IsInitialized { get; internal set; }
+
+        public bool Completed { get; internal set; }
+
+        public void Reset()
+        {
+            this.IsInitialized = false;
+            this.Completed = false;
+        }
     }
 }

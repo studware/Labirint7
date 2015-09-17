@@ -11,9 +11,17 @@ namespace Labyrinth_7
     //{
     //    private static void Main()
     //    {
-    //        var gameSetup = GameSetup.Instance;
-    //        var labyrinth = gameSetup.SetupNewLabyrinth();
+    //        var game = Control.Instance;
 
+    //        game.Visualization.PrintStartMessage();
+
+    //        var labyrinth = game.Setup.SetupNewLabyrinth();
+    //        game.State.IsInitialized = true;
+
+    //        Console.WriteLine("Labyrinth is Ready");
+    //        Console.WriteLine();
+
+    //        game.Visualization.DrawLabyrinth(labyrinth);
     //    }
     //}
 }

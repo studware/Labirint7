@@ -43,8 +43,12 @@
   <ItemGroup>
     <Compile Include="ConsoleMethods\ConsoleManipulation.cs" />
     <Compile Include="EntryPoint.cs" />
+    <Compile Include="GameMechanics\Control.cs" />
     <Compile Include="GameMechanics\GameSetup.cs" />
     <Compile Include="GameMechanics\GameState.cs" />
+    <Compile Include="GameMechanics\PlayerControls\IGameControls.cs" />
+    <Compile Include="GameMechanics\PlayerControls\IPlayControls.cs" />
+    <Compile Include="GameMechanics\PlayerControls\KeyBindings.cs" />
     <Compile Include="OldCode\Game.cs" />
     <Compile Include="GameObjects\FreeSpace.cs" />
     <Compile Include="GameObjects\IGameObject.cs" />

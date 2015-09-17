@@ -36,7 +36,7 @@
         }
 
         public static void Main()
-        {           
+        {
             currentRow = GameStartRow;
             currentColumn = GameStartColumn;
 

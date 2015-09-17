@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Labyrinth_7.LabyrinthGrid;
-
-namespace Labyrinth_7.Visualization
+﻿namespace Labyrinth_7.Graphics
 {
+    using System;
+    using Labyrinth_7.LabyrinthGrid;
+
     public class Visualization
     {
+        private string gameStartMessage = "Welcome to 'Labyrinth' game. Your goal is to escape. Use 'T' to view the top \nscoreboard,'R' to start a new game and 'E' to quit the game.\n";
+
         private static Visualization singleton;
 
         private Visualization()
@@ -28,7 +26,13 @@ namespace Labyrinth_7.Visualization
             }
         }
 
-        public void DrawLabyrinth(LabyrinthGrid.Labyrinth labyrinth)
+        public void PrintStartMessage()
+        {
+            Console.WriteLine(gameStartMessage);
+            Console.WriteLine();
+        }
+
+        public void DrawLabyrinth(Labyrinth labyrinth)
         {
             for (int i = 0; i < labyrinth.LengthY; i++)
             {
@@ -40,7 +44,7 @@ namespace Labyrinth_7.Visualization
                     Console.BackgroundColor = currentGameObject.BackgroundColor;
                     Console.ForegroundColor = currentGameObject.ForegroundColor;
 
-                    Console.WriteLine(currentSymbol);
+                    Console.Write(currentSymbol + " ");
                 }
                 Console.WriteLine();
             }
