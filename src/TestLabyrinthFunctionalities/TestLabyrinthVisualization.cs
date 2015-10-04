@@ -3,7 +3,8 @@
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Labyrinth_7.LabyrinthGrid.LabyrinthGeneration;
-    using Labyrinth_7.Visualization;
+    using Labyrinth_7.Graphics;
+    //using Labyrinth_7.Visualization;
 
     [TestClass]
     public class TestLabyrinthVisualization
@@ -17,6 +18,7 @@
             director.Generate(smallBuilder);
 
             var smallLabyrinth = smallBuilder.Labyrinth;
+
 
             var visualizator = Visualization.Instance;
 
