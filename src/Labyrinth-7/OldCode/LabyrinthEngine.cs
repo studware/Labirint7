@@ -35,38 +35,38 @@
             }
         }
 
-        public static void Main()
-        {
-            currentRow = GameStartRow;
-            currentColumn = GameStartColumn;
+        //public static void Main()
+        // {
+        //    currentRow = GameStartRow;
+        //    currentColumn = GameStartColumn;
 
-            // char[,] labyrinth = new char[LabyrinthRowLength, LabyrinthColumnLength];
+        //    // char[,] labyrinth = new char[LabyrinthRowLength, LabyrinthColumnLength];
 
-            var labyrinth = new Labyrinth(LabyrinthRowLength);
+        //    var labyrinth = new Labyrinth(LabyrinthRowLength);
 
-            while (true)
-            {
-                Console.Clear();
-                Console.WriteLine("Welcome to \"Labyrinth\" game. Your goal is to escape. Use 'T' to view the top \nscoreboard,'R' to start a new game and 'E' to quit the game.\n ");
+        //    while (true)
+        //    {
+        //        Console.Clear();
+        //        Console.WriteLine("Welcome to \"Labyrinth\" game. Your goal is to escape. Use 'T' to view the top \nscoreboard,'R' to start a new game and 'E' to quit the game.\n ");
 
-                gameInitialized = false;
-                gameEndedRecordScore = false;
+        //        gameInitialized = false;
+        //        gameEndedRecordScore = false;
 
-                if (!gameInitialized)
-                {
-                    labyrinth.GenerateObstacles();
-                }
+        //        if (!gameInitialized)
+        //        {
+        //            labyrinth.GenerateObstacles();
+        //        }
 
-                DisplayLabyrinth(labyrinth);
+        //        DisplayLabyrinth(labyrinth);
 
-                PlayGame(labyrinth, currentRow, currentColumn);
+        //        PlayGame(labyrinth, currentRow, currentColumn);
 
-                if (gameEndedRecordScore) // used for adding score only when game is finished naturally and not by the restart command.
-                {
-                    AddScore(scores, currentMoves);
-                }
-            }
-        }
+        //        if (gameEndedRecordScore) // used for adding score only when game is finished naturally and not by the restart command.
+        //        {
+        //            AddScore(scores, currentMoves);
+        //        }
+        //    }
+        //}
 
         static void AddScore(List<Table> scores, int movesCount)
         {

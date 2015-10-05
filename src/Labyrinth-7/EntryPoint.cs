@@ -7,21 +7,21 @@ using Labyrinth_7.GameMechanics;
 
 namespace Labyrinth_7
 {
-    //public class EntryPoint
-    //{
-    //    private static void Main()
-    //    {
-    //        var game = Control.Instance;
+    public class EntryPoint
+    {
+        private static void Main()
+        {
+            var game = Control.Instance;
 
-    //        game.Visualization.PrintStartMessage();
+            game.Visualization.PrintStartMessage();
 
-    //        var labyrinth = game.Setup.SetupNewLabyrinth();
-    //        game.State.IsInitialized = true;
+            var labyrinth = game.Setup.SetupNewLabyrinth();
+            game.State.IsInitialized = true;
 
-    //        Console.WriteLine("Labyrinth is Ready");
-    //        Console.WriteLine();
+            Console.WriteLine("Labyrinth is Ready");
+            Console.WriteLine();
 
-    //        game.Visualization.DrawLabyrinth(labyrinth);
-    //    }
-    //}
+            game.Visualization.DrawLabyrinth(labyrinth);
+        }
+    }
 }
