@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Labyrinth_7.GameMechanics;
+using Labyrinth_7.Visualization;
 
 namespace Labyrinth_7
 {
@@ -11,17 +12,22 @@ namespace Labyrinth_7
     {
         private static void Main()
         {
-            var game = Control.Instance;
+            //var game = Control.Instance;
 
-            game.Visualization.PrintStartMessage();
+            //game.Visualization.PrintStartMessage();
 
-            var labyrinth = game.Setup.SetupNewLabyrinth();
-            game.State.IsInitialized = true;
+            //var labyrinth = game.Setup.SetupNewLabyrinth();
+            //game.State.IsInitialized = true;
 
-            Console.WriteLine("Labyrinth is Ready");
-            Console.WriteLine();
+            //Console.WriteLine("Labyrinth is Ready");
+            //Console.WriteLine();
 
-            game.Visualization.DrawLabyrinth(labyrinth);
+            //game.Visualization.DrawLabyrinth(labyrinth);
+
+            IVisualization console = ConsoleVisualization.Instance;
+            GameEngine engine = new GameEngine(console);
+            engine.InitGame();
+
         }
     }
 }

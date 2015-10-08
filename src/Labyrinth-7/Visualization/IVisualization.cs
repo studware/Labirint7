@@ -7,5 +7,6 @@
     {
         void PrintStartMessage();
         void DrawLabyrinth(Labyrinth labyrinth);
+        void PrintMessage(string message);
     }
 }

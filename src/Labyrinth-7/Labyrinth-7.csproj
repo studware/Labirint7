@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ConsoleMethods\ConsoleManipulation.cs" />
     <Compile Include="EntryPoint.cs" />
+    <Compile Include="GameEngine.cs" />
     <Compile Include="GameMechanics\Control.cs" />
     <Compile Include="GameMechanics\GameSetup.cs" />
     <Compile Include="GameMechanics\GameState.cs" />
