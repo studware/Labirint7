@@ -5,7 +5,7 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using Labyrinth_7.Graphics;
+    using Labyrinth_7.Visualization;
 
     public class Control
     {
@@ -44,11 +44,11 @@
             }
         }
 
-        public Visualization Visualization
+        public ConsoleVisualization Visualization
         {
             get
             {
-                return Visualization.Instance;
+                return ConsoleVisualization.Instance;
             }
         }
     }

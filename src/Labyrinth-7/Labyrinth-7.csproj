@@ -72,7 +72,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GameObjects\BaseObject.cs" />
     <Compile Include="OldCode\Table.cs" />
-    <Compile Include="Visualization\Visualization.cs" />
+    <Compile Include="Visualization\IVisualization.cs" />
+    <Compile Include="Visualization\ConsoleVisualization.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

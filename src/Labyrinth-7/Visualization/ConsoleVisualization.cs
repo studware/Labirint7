@@ -1,25 +1,25 @@
-﻿namespace Labyrinth_7.Graphics
+﻿namespace Labyrinth_7.Visualization
 {
     using System;
     using Labyrinth_7.LabyrinthGrid;
 
-    public class Visualization
+    public class ConsoleVisualization:IVisualization
     {
         private string gameStartMessage = "Welcome to 'Labyrinth' game. Your goal is to escape. Use 'T' to view the top \nscoreboard,'R' to start a new game and 'E' to quit the game.\n";
 
-        private static Visualization singleton;
+        private static ConsoleVisualization singleton;
 
-        private Visualization()
+        private ConsoleVisualization()
         {
         }
 
-        public static Visualization Instance
+        public static ConsoleVisualization Instance
         {
             get
             {
                 if (singleton == null)
                 {
-                    singleton = new Visualization();
+                    singleton = new ConsoleVisualization();
                 }
 
                 return singleton;
