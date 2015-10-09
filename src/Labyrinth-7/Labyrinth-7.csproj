@@ -47,6 +47,9 @@
     <Compile Include="GameMechanics\Control.cs" />
     <Compile Include="GameMechanics\GameSetup.cs" />
     <Compile Include="GameMechanics\GameState.cs" />
+    <Compile Include="GameMechanics\MoveDown.cs" />
+    <Compile Include="GameMechanics\MoveUp.cs" />
+    <Compile Include="GameMechanics\PlayerControl.cs" />
     <Compile Include="GameMechanics\PlayerControls\IGameControls.cs" />
     <Compile Include="GameMechanics\PlayerControls\IPlayControls.cs" />
     <Compile Include="GameMechanics\PlayerControls\KeyBindings.cs" />
