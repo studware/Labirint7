@@ -51,14 +51,14 @@
         public override void AddObjects()
         {
             var obstacleTemplate = new Obstacle(
-                this.detailsConfiguration.ObstacleVisualization
-                , this.detailsConfiguration.ObstacleForegroundColor
-                , this.detailsConfiguration.ObstacleBackgroundColor);
+                this.detailsConfiguration.ObstacleVisualization);
+                //, this.detailsConfiguration.ObstacleForegroundColor
+                //, this.detailsConfiguration.ObstacleBackgroundColor);
 
             var freeSpaceTemplate = new FreeSpace(
-                this.detailsConfiguration.FreeSpaceVisualization
-                , this.detailsConfiguration.FreeSpaceForegroundColor
-                , this.detailsConfiguration.FreeSpaceBackgroundColor);
+                this.detailsConfiguration.FreeSpaceVisualization);
+                //, this.detailsConfiguration.FreeSpaceForegroundColor
+                //, this.detailsConfiguration.FreeSpaceBackgroundColor);
 
             this.gameObjectsGenerator.GenerateObjects(this.labyrinth, obstacleTemplate, freeSpaceTemplate);
         }

@@ -53,6 +53,12 @@
     <Compile Include="GameMechanics\PlayerControls\IGameControls.cs" />
     <Compile Include="GameMechanics\PlayerControls\IPlayControls.cs" />
     <Compile Include="GameMechanics\PlayerControls\KeyBindings.cs" />
+    <Compile Include="GameObjectsFactories\CreateFreeSpace.cs" />
+    <Compile Include="GameObjectsFactories\CreatePlayer.cs" />
+    <Compile Include="GameObjectsFactories\CreateVisitedCell.cs" />
+    <Compile Include="GameObjectsFactories\GameObjectsFactory.cs" />
+    <Compile Include="GameObjectsFactories\CreateObstacles.cs" />
+    <Compile Include="GameObjects\VisitedCell.cs" />
     <Compile Include="OldCode\Game.cs" />
     <Compile Include="GameObjects\FreeSpace.cs" />
     <Compile Include="GameObjects\IGameObject.cs" />

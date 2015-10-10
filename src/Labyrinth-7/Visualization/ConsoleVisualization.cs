@@ -41,8 +41,8 @@
                     var currentGameObject = labyrinth[i, j];
 
                     char currentSymbol = currentGameObject.Visualization;
-                    Console.BackgroundColor = currentGameObject.BackgroundColor;
-                    Console.ForegroundColor = currentGameObject.ForegroundColor;
+                    //Console.BackgroundColor = currentGameObject.BackgroundColor;
+                    //Console.ForegroundColor = currentGameObject.ForegroundColor;
 
                     Console.Write(currentSymbol + " ");
                 }

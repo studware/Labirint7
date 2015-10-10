@@ -8,18 +8,26 @@
 
     public class FreeSpace : BaseObject, IGameObject, ICloneable
     {
-        public FreeSpace(char appearance) : base(appearance)
+        private const char symbol = '-';
+
+        public FreeSpace()
+            : this(symbol)
         {
         }
 
-        public FreeSpace(char appearance, ConsoleColor fore, ConsoleColor back)
-            : base(appearance, fore, back)
+        public FreeSpace(char appearance)
+            : base(appearance)
         {
         }
 
-        public object Clone()
-        {
-            return this.MemberwiseClone();
-        }
+        //public FreeSpace(char appearance, ConsoleColor fore, ConsoleColor back)
+        //    : base(appearance, fore, back)
+        //{
+        //}
+
+        //public object Clone()
+        //{
+        //    return this.MemberwiseClone();
+        //}
     }
 }

@@ -17,30 +17,36 @@
         /// </summary>
         /// <param name="appearance"></param>
         public BaseObject(char appearance)
-            : this (appearance, ConsoleColor.White, ConsoleColor.Black)
-        {
-        }
-
-        public BaseObject(char appearance, ConsoleColor foreground, ConsoleColor background)
+           // : this (appearance, ConsoleColor.White, ConsoleColor.Black)
         {
             this.Visualization = appearance;
-            this.ForegroundColor = foreground;
-            this.BackgroundColor = background;
         }
+
+        //public BaseObject(char appearance, ConsoleColor foreground, ConsoleColor background)
+        //{
+        //    this.Visualization = appearance;
+        //    this.ForegroundColor = foreground;
+        //    this.BackgroundColor = background;
+        //}
 
         /// <summary>
         /// Determines the object symbol on the labyrinth grid
         /// </summary>
         public char Visualization { get; protected set; }
 
-        /// <summary>
-        /// The object foreground color
-        /// </summary>
-        public ConsoleColor ForegroundColor { get; protected set; }
+        ///// <summary>
+        ///// The object foreground color
+        ///// </summary>
+        //public ConsoleColor ForegroundColor { get; protected set; }
 
-        /// <summary>
-        /// The object backround color
-        /// </summary>
-        public ConsoleColor BackgroundColor { get; protected set; }
+        ///// <summary>
+        ///// The object backround color
+        ///// </summary>
+        //public ConsoleColor BackgroundColor { get; protected set; }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

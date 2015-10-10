@@ -9,18 +9,24 @@
 
     public class Obstacle : BaseObject, IGameObject, ICloneable
     {
+        private const char symbol = 'X';
+
+        public Obstacle():this(symbol)
+        {
+        }
+
         public Obstacle(char appearance) : base(appearance)
         {
         }
 
-        public Obstacle(char appearance, ConsoleColor fore, ConsoleColor back)
-            : base(appearance, fore, back)
-        {
-        }
+        //public Obstacle(char appearance, ConsoleColor fore, ConsoleColor back)
+        //    : base(appearance, fore, back)
+        //{
+        //}
 
-        public object Clone()
-        {
-            return this.MemberwiseClone();
-        }
+        //public object Clone()
+        //{
+        //    return this.MemberwiseClone();
+        //}
     }
 }

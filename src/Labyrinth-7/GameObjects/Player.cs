@@ -11,6 +11,10 @@
     {
         private const char defaultAppearance = '*';
 
+        public Player():base(defaultAppearance)
+        {
+        }
+
         public Player(string nick, ILabyrinthNav navi)
             : base(defaultAppearance)
         {
@@ -26,7 +30,7 @@
         }
 
         public Player(string nick, ILabyrinthNav navi, char appearance, ConsoleColor foreground, ConsoleColor background)
-            : base(appearance, foreground, background)
+            : base(appearance)//, foreground, background)
         {
             this.Nick = nick;
             this.LabyrinthNavigation = navi;

@@ -6,8 +6,10 @@
     {
         char Visualization { get; }
 
-        ConsoleColor ForegroundColor { get; }
+        object Clone();
 
-        ConsoleColor BackgroundColor { get; }
+        //ConsoleColor ForegroundColor { get; }
+
+        //ConsoleColor BackgroundColor { get; }
     }
 }
