@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Labyrinth_7.GameObjectsFactories
 {
-    public abstract class GameObjectsFactory
+    public abstract class GameObjectsFactory : Labyrinth_7.GameObjectsFactories.IGameObjectsFactory
     {
         private IGameObject gameObjectInstance;
 

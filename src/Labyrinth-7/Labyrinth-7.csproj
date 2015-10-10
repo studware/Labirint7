@@ -54,16 +54,21 @@
     <Compile Include="GameMechanics\PlayerControls\IPlayControls.cs" />
     <Compile Include="GameMechanics\PlayerControls\KeyBindings.cs" />
     <Compile Include="GameObjectsFactories\CreateFreeSpace.cs" />
-    <Compile Include="GameObjectsFactories\CreatePlayer.cs" />
+    <Compile Include="GameObjectsFactories\CreatePlayerCell.cs" />
     <Compile Include="GameObjectsFactories\CreateVisitedCell.cs" />
     <Compile Include="GameObjectsFactories\GameObjectsFactory.cs" />
     <Compile Include="GameObjectsFactories\CreateObstacles.cs" />
+    <Compile Include="GameObjectsFactories\IGameObjectsFactory.cs" />
     <Compile Include="GameObjects\VisitedCell.cs" />
+    <Compile Include="LabyrinthGrid\LabyrinthStates\ActiveState.cs" />
+    <Compile Include="LabyrinthGrid\LabyrinthStates\EndState.cs" />
+    <Compile Include="LabyrinthGrid\LabyrinthStates\InitialState.cs" />
+    <Compile Include="LabyrinthGrid\LabyrinthStates\State.cs" />
     <Compile Include="OldCode\Game.cs" />
     <Compile Include="GameObjects\FreeSpace.cs" />
     <Compile Include="GameObjects\IGameObject.cs" />
     <Compile Include="GameObjects\Obstacle.cs" />
-    <Compile Include="GameObjects\Player.cs" />
+    <Compile Include="GameObjects\PlayerCell.cs" />
     <Compile Include="LabyrinthGrid\ILabyrinthNav.cs" />
     <Compile Include="LabyrinthGrid\LabyrinthGeneration\Config.cs" />
     <Compile Include="LabyrinthGrid\LabyrinthGeneration\GameObjectsGenerator.cs" />
@@ -82,6 +87,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GameObjects\BaseObject.cs" />
     <Compile Include="OldCode\Table.cs" />
+    <Compile Include="RandomProviders\IRandom.cs" />
+    <Compile Include="RandomProviders\RandomProvider.cs" />
     <Compile Include="Visualization\IVisualization.cs" />
     <Compile Include="Visualization\ConsoleVisualization.cs" />
   </ItemGroup>

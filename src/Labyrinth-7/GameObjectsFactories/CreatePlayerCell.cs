@@ -7,11 +7,11 @@ using Labyrinth_7.GameObjects;
 
 namespace Labyrinth_7.GameObjectsFactories
 {
-    class CreatePlayer:GameObjectsFactory
+    public class CreatePlayerCell:GameObjectsFactory
     {
         protected override IGameObject CreateInstance()
         {
-            return new Player();
+            return new PlayerCell();
         }
     }
 }

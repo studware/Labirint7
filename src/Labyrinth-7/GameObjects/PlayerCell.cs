@@ -7,29 +7,29 @@
     using System.Threading.Tasks;
     using Labyrinth_7.LabyrinthGrid;
 
-    public class Player : BaseObject, IGameObject 
+    public class PlayerCell : BaseObject, IGameObject 
     {
         private const char defaultAppearance = '*';
 
-        public Player():base(defaultAppearance)
+        public PlayerCell():base(defaultAppearance)
         {
         }
 
-        public Player(string nick, ILabyrinthNav navi)
+        public PlayerCell(string nick, ILabyrinthNav navi)
             : base(defaultAppearance)
         {
             this.Nick = nick;
             this.LabyrinthNavigation = navi;
         }
 
-        public Player(string nick, ILabyrinthNav navi, char appearance)
+        public PlayerCell(string nick, ILabyrinthNav navi, char appearance)
             : base(appearance)
         {
             this.Nick = nick;
             this.LabyrinthNavigation = navi;
         }
 
-        public Player(string nick, ILabyrinthNav navi, char appearance, ConsoleColor foreground, ConsoleColor background)
+        public PlayerCell(string nick, ILabyrinthNav navi, char appearance, ConsoleColor foreground, ConsoleColor background)
             : base(appearance)//, foreground, background)
         {
             this.Nick = nick;

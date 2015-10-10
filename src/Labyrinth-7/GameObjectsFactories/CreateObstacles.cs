@@ -7,7 +7,7 @@ using Labyrinth_7.GameObjects;
 
 namespace Labyrinth_7.GameObjectsFactories
 {
-    class CreateObstacles:GameObjectsFactory
+    public class CreateObstacles:GameObjectsFactory
     {
 
         protected override IGameObject CreateInstance()

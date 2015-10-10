@@ -7,12 +7,17 @@
     using System.Text;
     using System.Threading.Tasks;
     using Labyrinth_7.GameObjects;
+using Labyrinth_7.GameObjectsFactories;
+    using Labyrinth_7.RandomProviders;
+using Labyrinth_7.LabyrinthGrid.LabyrinthStates;
 
     public class Labyrinth : IEnumerable
     {
         private IGameObject[,] labyrinthGrid;
 
         private Position startPosition;
+        private Position currentPosition;
+
         /// <summary>
         /// Creates a square labyrinth
         /// </summary>
@@ -25,6 +30,17 @@
             this.labyrinthGrid = new IGameObject[length, length];
         }
 
+        public Labyrinth(int length, int width)
+        {
+            this.LengthX = length;
+            this.LengthY = length;
+
+            this.labyrinthGrid = new IGameObject[length, width];
+            this.State = new InitialState(this);
+
+        }
+
+        public State State { get; set; }
         public int LengthY { get; private set; }
 
         public int LengthX { get; private set; }
@@ -90,6 +106,17 @@
                     yield return current;
                 }
             }
+        }
+
+        public bool SetPosition(IGameObject gameObject, Position position)
+        {
+            if (position.X < 0 || position.Y >= this.LengthX || position.Y < 0 || position.Y >= this.LengthY)
+            {
+                throw new ArgumentOutOfRangeException("The position is not available in the Labyrinth");
+            }
+
+            this.labyrinthGrid[position.X, position.Y] = gameObject;
+            return true;
         }
     }
 }
