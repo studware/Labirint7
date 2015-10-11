@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Labyrinth_7.GameObjects;
 using Labyrinth_7.GameObjectsFactories;
 using Labyrinth_7.RandomProviders;
+using Labyrinth_7.ObjectFactories;
 
 namespace Labyrinth_7.LabyrinthGrid.LabyrinthGeneration
 {
@@ -45,7 +46,7 @@ namespace Labyrinth_7.LabyrinthGrid.LabyrinthGeneration
             }
         }
 
-            public void GenerateObjectsNew(Labyrinth labyrinth, IGameObjectsFactory obstaclesFactory, IGameObjectsFactory freeSpaceFactory)
+            public void GenerateObjectsNew(Labyrinth labyrinth, IObjectFactory factory)
         {
             for (int i = 0; i < labyrinth.LengthX; i++)
             {
@@ -56,16 +57,20 @@ namespace Labyrinth_7.LabyrinthGrid.LabyrinthGeneration
 
                     if (randomNumber == 1)
                     {
-                        currentObject = obstaclesFactory.GetGameObject();
+                        currentObject = factory.GetObstacle();
                     } 
                     else
                     {
-                        currentObject = freeSpaceFactory.GetGameObject();
+                        currentObject = factory.GetFreeSpace();
                     }
 
                     labyrinth[i, j] = currentObject;
                 }
             }
+
+            labyrinth[labyrinth.StartPosition] = factory.GetPlayerCell();
+
+
 
             // bool thereIsWayOut = labyrinth.SolutionChecker(this.StartPosition);
 

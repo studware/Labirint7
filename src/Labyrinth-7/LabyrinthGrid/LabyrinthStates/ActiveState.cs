@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Labyrinth_7.LabyrinthGrid.LabyrinthStates
 {
-    class ActiveState:State
+    class ActiveState:State 
     {
         public ActiveState(Labyrinth labyrinth):base(labyrinth)
         {

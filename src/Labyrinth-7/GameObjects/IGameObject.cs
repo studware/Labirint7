@@ -8,6 +8,8 @@
 
         object Clone();
 
+        bool IsFree { get; }
+
         //ConsoleColor ForegroundColor { get; }
 
         //ConsoleColor BackgroundColor { get; }

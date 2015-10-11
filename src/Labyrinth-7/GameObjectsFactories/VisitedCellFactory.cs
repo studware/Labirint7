@@ -7,11 +7,11 @@ using Labyrinth_7.GameObjects;
 
 namespace Labyrinth_7.GameObjectsFactories
 {
-    public class CreateFreeSpace:GameObjectsFactory
+    class VisitedCellFactory:GameObjectsFactory
     {
         protected override IGameObject CreateInstance()
         {
-            return new FreeSpace();
+            return new VisitedCell();
         }
     }
 }

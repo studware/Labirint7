@@ -11,7 +11,7 @@ namespace Labyrinth_7.GameObjectsFactories
     {
         private IGameObject gameObjectInstance;
 
-        public IGameObject GetGameObject()
+        public IGameObject GetInstance()
         {
             if(this.gameObjectInstance ==null)
             {

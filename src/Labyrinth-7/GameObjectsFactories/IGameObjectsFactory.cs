@@ -5,6 +5,6 @@ namespace Labyrinth_7.GameObjectsFactories
 {
     public interface IGameObjectsFactory
     {
-        IGameObject GetGameObject();
+        IGameObject GetInstance();
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Labyrinth_7.GameObjectsFactories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,31 @@ namespace Labyrinth_7.LabyrinthGrid.LabyrinthStates
         }
         
         public Labyrinth Labyrinth { get; set; }
+
+        public bool SetLabyrinthCell(Position position)
+        {
+            bool isState = this.SetState(position); 
+            if(isState)
+            {
+                bool isNextCellFree = this.Labyrinth[position].IsFree;
+                if(isNextCellFree)
+                {
+                    IGameObjectsFactory playerFactory=new PlayerPositionFactory();
+                    this.Labyrinth[position] = playerFactory.GetInstance();
+
+                    IGameObjectsFactory visitedFactory = new VisitedCellFactory();
+                    this.Labyrinth[this.Labyrinth.CurrentPosition] = visitedFactory.GetInstance();
+
+                    this.Labyrinth.CurrentPosition = position;
+
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        protected abstract bool SetState(Position position);
 
         public abstract void MoveUp();
 

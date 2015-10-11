@@ -48,5 +48,7 @@
         {
             return this.MemberwiseClone();
         }
+
+        public abstract bool IsFree { get; }
     }
 }

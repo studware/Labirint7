@@ -2,6 +2,7 @@
 using Labyrinth_7.GameObjectsFactories;
 using Labyrinth_7.LabyrinthGrid;
 using Labyrinth_7.LabyrinthGrid.LabyrinthGeneration;
+using Labyrinth_7.ObjectFactories;
 using Labyrinth_7.Visualization;
 using System;
 using System.Collections.Generic;
@@ -30,8 +31,9 @@ namespace Labyrinth_7
             //var labyrinth = game.Setup.SetupNewLabyrinth();
             //game.State.IsInitialized = true;
             Labyrinth labyrinth = new Labyrinth(LabyrinthSize, LabyrinthSize);
+            IObjectFactory instanceFactory = new ObjectFactory();
             GameObjectsGenerator generator = new GameObjectsGenerator();
-            generator.GenerateObjectsNew(labyrinth, new CreateObstacles(), new CreateFreeSpace());
+            generator.GenerateObjectsNew(labyrinth, instanceFactory);
 
             this.visualization.PrintMessage("Labyrinth is Ready");
             

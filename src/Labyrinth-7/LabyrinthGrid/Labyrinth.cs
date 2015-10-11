@@ -59,6 +59,8 @@ using Labyrinth_7.LabyrinthGrid.LabyrinthStates;
             }
         }
 
+        public Position CurrentPosition { get; set; }
+
         // Added indexers for convinience latter
         public IGameObject this[Position position]
         {
@@ -108,14 +110,14 @@ using Labyrinth_7.LabyrinthGrid.LabyrinthStates;
             }
         }
 
-        public bool SetPosition(IGameObject gameObject, Position position)
+        public bool SetPosition(IGameObject gameObject, int x, int y)
         {
-            if (position.X < 0 || position.Y >= this.LengthX || position.Y < 0 || position.Y >= this.LengthY)
+            if (x < 0 || x >= this.LengthX || y < 0 || y >= this.LengthY)
             {
                 throw new ArgumentOutOfRangeException("The position is not available in the Labyrinth");
             }
 
-            this.labyrinthGrid[position.X, position.Y] = gameObject;
+            this.labyrinthGrid[x, y] = gameObject;
             return true;
         }
     }

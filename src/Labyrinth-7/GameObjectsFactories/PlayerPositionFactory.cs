@@ -7,11 +7,11 @@ using Labyrinth_7.GameObjects;
 
 namespace Labyrinth_7.GameObjectsFactories
 {
-    class CreateVisitedCell:GameObjectsFactory
+    public class PlayerPositionFactory:GameObjectsFactory
     {
         protected override IGameObject CreateInstance()
         {
-            return new VisitedCell();
+            return new PlayerPosition();
         }
     }
 }

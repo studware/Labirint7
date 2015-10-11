@@ -28,5 +28,10 @@
         //{
         //    return this.MemberwiseClone();
         //}
+
+        public override bool IsFree
+        {
+            get { return false; }
+        }
     }
 }

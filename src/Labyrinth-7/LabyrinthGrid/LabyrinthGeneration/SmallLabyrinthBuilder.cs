@@ -32,7 +32,7 @@
                 navi = new LabyrinthNavigation(this.labyrinth);
             }
 
-            var player = new PlayerCell(
+            var player = new PlayerPosition(
                 this.detailsConfiguration.PlayerNick
                 , navi
                 , this.detailsConfiguration.PlayerVisualization
