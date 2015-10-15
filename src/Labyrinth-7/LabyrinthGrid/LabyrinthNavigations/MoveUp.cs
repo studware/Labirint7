@@ -16,14 +16,7 @@ namespace Labyrinth_7.LabyrinthGrid.LabyrinthNavigations
         protected override Position GetNewPosition()
         {
             Position currentPosition = this.labyrinth.CurrentPosition;
-            return new Position(currentPosition.X, CurrentPosition.Y - 1);
-        }
-
-        protected override bool VerifyNewPosition(Position position)
-        {
-            
-
-            return this.labyrinth[position].IsFree;
+            return labyrinth.ObjectFactory.GetPosition(CurrentPosition.Row - 1, currentPosition.Column);
         }
     }
 }

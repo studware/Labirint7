@@ -32,10 +32,10 @@
         {
             var startPosition = this.labyrinth.StartPosition;
 
-            if (this.labyrinth[startPosition.X + 1, startPosition.Y] is FreeSpace ||
-                this.labyrinth[startPosition.X - 1, startPosition.Y] is FreeSpace ||
-                this.labyrinth[startPosition.X, startPosition.Y + 1] is FreeSpace ||
-                this.labyrinth[startPosition.X, startPosition.Y - 1] is FreeSpace)
+            if (this.labyrinth[startPosition.Column + 1, startPosition.Row] is FreeSpace ||
+                this.labyrinth[startPosition.Column - 1, startPosition.Row] is FreeSpace ||
+                this.labyrinth[startPosition.Column, startPosition.Row + 1] is FreeSpace ||
+                this.labyrinth[startPosition.Column, startPosition.Row - 1] is FreeSpace)
             {
                 return true;
             }

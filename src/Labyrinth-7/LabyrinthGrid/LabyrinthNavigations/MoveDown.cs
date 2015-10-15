@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Labyrinth_7.LabyrinthGrid.LabyrinthNavigations
 {
-    class MoveDown:Moves
+    class MoveDown : Moves
     {
         public MoveDown(Labyrinth labyrinth)
             : base(labyrinth)
@@ -16,12 +16,7 @@ namespace Labyrinth_7.LabyrinthGrid.LabyrinthNavigations
         protected override Position GetNewPosition()
         {
             Position currentPosition = this.labyrinth.CurrentPosition;
-            return new Position(currentPosition.X, CurrentPosition.Y + 1);
-        }
-
-        protected override bool VerifyNewPosition(Position position)
-        {
-            throw new NotImplementedException();
+            return this.labyrinth.ObjectFactory.GetPosition(currentPosition.Row + 1, currentPosition.Column);
         }
     }
 }

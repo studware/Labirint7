@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Labyrinth_7.LabyrinthGrid.LabyrinthNavigations
 {
-    class MovesFactory
+    public class MovesFactory
     {
         private Labyrinth labyrinth;
 
@@ -23,6 +23,29 @@ namespace Labyrinth_7.LabyrinthGrid.LabyrinthNavigations
             }
         }
 
+        public IMoves MoveDown
+        {
+            get
+            {
+                return new MoveDown(this.labyrinth);
+            }
+        }
+
+        public IMoves MoveLeft
+        {
+            get
+            {
+                return new MoveLeft(this.labyrinth);
+            }
+        }
+        
+        public IMoves MoveRight
+        {
+            get
+            {
+                return new MoveRight(this.labyrinth);
+            }
+        }
 
     }
 }

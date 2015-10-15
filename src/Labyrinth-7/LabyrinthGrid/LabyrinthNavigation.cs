@@ -25,8 +25,8 @@
         {
             Labyrinth Labyrinth = this.Labyrinth;
 
-            if (position.X >= Labyrinth.LengthX || position.X < 0 ||
-                position.Y >= Labyrinth.LengthY || position.Y < 0)
+            if (position.Column >= Labyrinth.Columns || position.Column < 0 ||
+                position.Row >= Labyrinth.Rows || position.Row < 0)
             {
                 return false;
             }
@@ -43,7 +43,7 @@
         public bool MoveDown()
         {
             var nextPosition = (Position)this.CurrentPosition.Clone();
-            nextPosition.X += 1;
+            nextPosition.Column += 1;
 
             return MoveTo(nextPosition);
         }
@@ -51,7 +51,7 @@
         public bool MoveLeft()
         {
             var nextPosition = (Position)this.CurrentPosition.Clone();
-            nextPosition.Y -= 1;
+            nextPosition.Row -= 1;
 
             return MoveTo(nextPosition);
         }
@@ -59,7 +59,7 @@
         public bool MoveRight()
         {
             var nextPosition = (Position)this.CurrentPosition.Clone();
-            nextPosition.Y += 1;
+            nextPosition.Row += 1;
 
             return false;
            
@@ -68,7 +68,7 @@
         public bool MoveUp()
         {
             var nextPosition = (Position)this.CurrentPosition.Clone();
-            nextPosition.X -= 1;
+            nextPosition.Column -= 1;
 
             return MoveTo(nextPosition);
         }

@@ -12,24 +12,15 @@ namespace Labyrinth_7.LabyrinthGrid.LabyrinthStates
         {
         }
 
-        public override void MoveUp()
+        protected override bool SetState(Position position)
         {
-            throw new NotImplementedException();
-        }
+            if(0<=position.Column&&position.Column<this.Labyrinth.Columns&&0<=position.Row&&position.Row<this.Labyrinth.Rows)
+            {
+                return true;
+            }
 
-        public override void MoveDown()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void MoveLeft()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void MoveRight()
-        {
-            throw new NotImplementedException();
+            this.Labyrinth.State = new EndState(this.Labyrinth);
+            return true;
         }
     }
 }

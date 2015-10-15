@@ -23,11 +23,13 @@ namespace Labyrinth_7.LabyrinthGrid.LabyrinthGeneration
             this.randomGenerator = random;
         }
 
+        public IObjectFactory ObjectFactory { get; set; }
+
         public void GenerateObjects(Labyrinth labyrinth, Obstacle obstacle, FreeSpace freeSpace)
         {
-            for (int i = 0; i < labyrinth.LengthX; i++)
+            for (int i = 0; i < labyrinth.Columns; i++)
             {
-                for (int j = 0; j < labyrinth.LengthY; j++)
+                for (int j = 0; j < labyrinth.Rows; j++)
                 {
                     int randomNumber = this.randomGenerator.Next(2);
                     IGameObject currentObject;
@@ -46,29 +48,29 @@ namespace Labyrinth_7.LabyrinthGrid.LabyrinthGeneration
             }
         }
 
-            public void GenerateObjectsNew(Labyrinth labyrinth, IObjectFactory factory)
+            public void GenerateObjectsNew(Labyrinth labyrinth)
         {
-            for (int i = 0; i < labyrinth.LengthX; i++)
+            for (int i = 0; i < labyrinth.Rows; i++)
             {
-                for (int j = 0; j < labyrinth.LengthY; j++)
+                for (int j = 0; j < labyrinth.Columns; j++)
                 {
                     int randomNumber = this.randomGenerator.Next(2);
                     IGameObject currentObject;
 
                     if (randomNumber == 1)
                     {
-                        currentObject = factory.GetObstacle();
+                        currentObject = labyrinth.ObjectFactory.GetObstacle();
                     } 
                     else
                     {
-                        currentObject = factory.GetFreeSpace();
+                        currentObject = labyrinth.ObjectFactory.GetFreeSpace();
                     }
 
                     labyrinth[i, j] = currentObject;
                 }
             }
 
-            labyrinth[labyrinth.StartPosition] = factory.GetPlayerCell();
+            labyrinth[labyrinth.StartPosition] = labyrinth.ObjectFactory.GetPlayerCell();
 
 
 

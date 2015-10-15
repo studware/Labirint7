@@ -16,21 +16,25 @@ namespace Labyrinth_7.LabyrinthGrid.LabyrinthStates
         
         public Labyrinth Labyrinth { get; set; }
 
-        public bool SetLabyrinthCell(Position position)
+        public virtual bool IsFinished
         {
-            bool isState = this.SetState(position); 
+            get
+            {
+                return false;
+            }
+        }
+
+        public bool SetLabyrinthCell(Position newPosition)
+        {
+            bool isState = this.SetState(newPosition); 
             if(isState)
             {
-                bool isNextCellFree = this.Labyrinth[position].IsFree;
+                bool isNextCellFree = this.Labyrinth[newPosition].IsFree;
                 if(isNextCellFree)
                 {
-                    IGameObjectsFactory playerFactory=new PlayerPositionFactory();
-                    this.Labyrinth[position] = playerFactory.GetInstance();
-
-                    IGameObjectsFactory visitedFactory = new VisitedCellFactory();
-                    this.Labyrinth[this.Labyrinth.CurrentPosition] = visitedFactory.GetInstance();
-
-                    this.Labyrinth.CurrentPosition = position;
+                    this.Labyrinth[newPosition] = this.Labyrinth.ObjectFactory.GetPlayerCell();
+                    this.Labyrinth[this.Labyrinth.CurrentPosition] = this.Labyrinth.ObjectFactory.GetVisited();
+                    this.Labyrinth.CurrentPosition = newPosition;
 
                     return true;
                 }
@@ -40,13 +44,5 @@ namespace Labyrinth_7.LabyrinthGrid.LabyrinthStates
         }
 
         protected abstract bool SetState(Position position);
-
-        public abstract void MoveUp();
-
-        public abstract void MoveDown();
-
-        public abstract void MoveLeft();
-
-        public abstract void MoveRight();
     }
 }

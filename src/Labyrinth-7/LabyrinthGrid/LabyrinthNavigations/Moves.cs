@@ -35,17 +35,18 @@ namespace Labyrinth_7.LabyrinthGrid.LabyrinthNavigations
 
         protected abstract Position GetNewPosition();
 
-        protected abstract bool VerifyNewPosition(Position position);
+        protected virtual bool VerifyNewPosition(Position position)
+        {
+            return this.labyrinth[position].IsFree;
+        }
 
         protected bool MoveToNewPosition(Position position)
         {
-            IGameObjectsFactory player = new PlayerPositionFactory();
-            bool setNewCell = labyrinth.SetPosition(player.GetInstance(), position.X, position.Y);
-            IGameObjectsFactory visitedCell = new VisitedCellFactory();
+            bool setNewCell = labyrinth.SetPosition(labyrinth.ObjectFactory.GetPlayerCell(), position.Column, position.Row);
             bool oldCell=false;
             if(setNewCell)
             {
-                oldCell= labyrinth.SetPosition(visitedCell.GetInstance(), labyrinth.CurrentPosition.X, labyrinth.CurrentPosition.Y);
+                oldCell= labyrinth.SetPosition(labyrinth.ObjectFactory.GetVisited(), labyrinth.CurrentPosition.Column, labyrinth.CurrentPosition.Row);
                 labyrinth.CurrentPosition=position;
             }
             return oldCell;

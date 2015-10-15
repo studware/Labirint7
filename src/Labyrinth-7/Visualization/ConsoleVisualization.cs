@@ -2,6 +2,7 @@
 {
     using System;
     using Labyrinth_7.LabyrinthGrid;
+    using LabyrinthGrid.LabyrinthNavigations;
 
     public class ConsoleVisualization:IVisualization
     {
@@ -34,9 +35,9 @@
 
         public void DrawLabyrinth(Labyrinth labyrinth)
         {
-            for (int i = 0; i < labyrinth.LengthY; i++)
+            for (int i = 0; i < labyrinth.Rows; i++)
             {
-                for (int j = 0; j < labyrinth.LengthX; j++)
+                for (int j = 0; j < labyrinth.Columns; j++)
                 {
                     var currentGameObject = labyrinth[i, j];
 
@@ -56,6 +57,22 @@
         public void PrintMessage(string message)
         {
             Console.WriteLine(message);
+        }
+
+
+        public IMoves GetUserCommand(MovesFactory factory)
+        {
+            Console.WriteLine("arrow");
+            ConsoleKeyInfo input = Console.ReadKey();
+            switch(input.Key)
+            {
+                case ConsoleKey.LeftArrow: return factory.MoveLeft; break;
+                case ConsoleKey.RightArrow: return factory.MoveRight; break;
+                case ConsoleKey.UpArrow: return factory.MoveUp; break;
+                case ConsoleKey.DownArrow: return factory.MoveDown; break;
+                default: throw new Exception(); break;
+            }
+
         }
     }
 }

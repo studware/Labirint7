@@ -8,15 +8,15 @@
 
     public class Position : IEquatable<Position>, ICloneable
     {
-        public Position(int x, int y)
+        public Position(int row, int column)
         {
-            this.X = x;
-            this.Y = y;
+            this.Column = column;
+            this.Row = row;
         }
         
-        public int X { get; set; }
+        public int Column { get; set; }
 
-        public int Y { get; set; }
+        public int Row { get; set; }
 
         public object Clone()
         {
@@ -25,8 +25,8 @@
 
         public bool Equals(Position other)
         {
-            return (this.X == other.X && 
-                    this.Y == other.Y);
+            return (this.Column == other.Column && 
+                    this.Row == other.Row);
         }
     }
 }
