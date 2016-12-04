@@ -33,7 +33,7 @@ The **public part** is **visible without authentication**. This public part incl
 
 - the application start page: contains public menu options and a search option;
 - user login page: login possible through user's site account or through Facebook account;
--) user registration page;
+- user registration page;
 - categories page: buttons with links for each category; when clicked, the the recipes of this category are displayed;
 - page with articles on cooking and alimentary topics;
 - recipes by category chosen from the category page. 
