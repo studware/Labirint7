@@ -57,9 +57,9 @@ Technologies, frameworks and development techniques used in the "Cooking e-Web A
 
 ### Application Back-end (Server)
 
-- 6 different public dynamic web pages
+- 6 different **public dynamic web pages**
   - Using [Pug](https://pugjs.org/)
-- 6 different private (authenticated) dynamic web pages**
+- 6 different **private (authenticated) dynamic web pages**
   - Using [Pug](https://pugjs.org/)
   
 - **5 different public RESTful routes** for AJAX: 
