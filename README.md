@@ -53,7 +53,7 @@ This area holds the following pages:
 
 ## Technical Implementation
 
-Technologies, frameworks and development techniques used "Cooking e-Web Application" project:
+Technologies, frameworks and development techniques used in the "Cooking e-Web Application" project:
 
 ### Application Back-end (Server)
 
