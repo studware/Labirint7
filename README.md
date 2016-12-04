@@ -17,12 +17,10 @@ Cooking e-Web Application is a standard Web application developed by Team "Freed
 
 ##Application Desription 
 
-The main purpоse of the application is to help the user easy to find cooking recipes and interesting articles on food topics. Paging and well organized, structured functionality allow the user to easily navigate around the application. He can easy find fantastic gourmet recipes, simple or sophisticated, then label the best ones as favorite, and even share them with friends via Facebook.
+The main purpоse of the application is to help the user easy to find cooking recipes and interesting articles on food topics. Paging and well organized, structured functionality allow the user to easily navigate around the application. He can easily find fantastic gourmet recipes, simple or sophisticated, then label the best ones as favorite, and even share them with friends via Facebook.
 The "Cooking e-Web Application" was designed and implemented using [Node.js](http://nodejs.org), [Express](expressjs.com) and [MongoDB](https://www.mongodb.com/).
 
 ## Application Logics
-
-It can be a discussion forum, blog system, e-commerce site, online gaming site, social network, or any other web application by your choice.
 
 "Cooking e-Web Application" consist of the 2 main parts:
 
