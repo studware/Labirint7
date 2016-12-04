@@ -72,9 +72,9 @@ Technologies, frameworks and development techniques used in the "Cooking e-Web A
   - authentication-router
 
 - **Express** framework is used for the server side of the application providing a minimal and flexible set of features for web and mobile applications.
-  - In order to implement a testable high-quality Web-application, "Cooking e-Web Application" was designed using an **MVC*** pattern;
+  - In order to implement a testable high-quality Web-application, "Cooking e-Web Application" was designed using an **MVC** pattern;
   
-- Cooking recipes data base was designed using **MongoDB** s data storage and data/service layer for accessing the database was created
+- Cooking recipes data base was designed using **MongoDB**'s data storage, and data/service layer for accessing the database was created
 
 - [Passport](http://passportjs.org/) strategy was applied for managing **users**
   - Registered users have role **user**
@@ -87,7 +87,7 @@ Technologies, frameworks and development techniques used in the "Cooking e-Web A
 - **More than 10 different unit tests** were written for the controllers and data logics
 - In order to avoid crashes when invalid data is entered, **error handling** and **data validation** were implemented 
 - Special strategies are applied to prevent the application from **security** holes (XSS, XSRF, Parameter Tampering)
-  - The **special HTML chaTracters** and tags like `<script>`, `<br />`, etc. are handled correctly
+  - The **special HTML chaTracters** and tags like `<script>`, `<br />`, etc. are handled correctly.
 
 ##  General Requirements
 
@@ -95,6 +95,7 @@ Technologies, frameworks and development techniques used in the "Cooking e-Web A
   https://github.com/TeamFreedom-NodeJS/TeamFreedomWebApplication
 
 - "Cooking e-Web Application" uploaded in the cloud: 
+
 
 ### Implementation of Optional Requirements
 
