@@ -1,4 +1,4 @@
- Team "Freedom"
+ # Team "Freedom"
 *************************************************
 Cooking e-Web Application was developed by Team "Freedom" as part of the "Web Applications with Node.js" course at Telerik Academy 2016 - Spring.
 
